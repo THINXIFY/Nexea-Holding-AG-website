@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   NEXEA HOLDING AG — Obsidian & Arctic Silver
+   ------------------------------------------------------------------ */
+@theme {
+  --color-obsidian: #090d11;
+  --color-carbon: #151c23;
+  --color-steel-deep: #24313c;
+
+  --color-frost: #f5f7f9;
+  --color-pure: #ffffff;
+  --color-line: #dce3e8;
+
+  --color-silver: #aebeca;
+  --color-platinum: #d6e0e8;
+  --color-steel: #526d80;
+
+  --color-ink: #10171e;
+  --color-muted: #52616d;
+
+  --font-display: var(--font-instrument-serif), "Times New Roman", serif;
+  --font-ui: var(--font-manrope), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-silk: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-obsidian);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+  body {
+    background: var(--color-frost);
+    color: var(--color-steel-deep);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-steel);
+    color: var(--color-pure);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-steel);
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible,
+  .on-dark:focus-visible {
+    outline-color: var(--color-platinum);
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@utility container-nx {
+  width: 100%;
+  max-width: 85rem; /* 1360px */
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 64rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Editorial type scale ------------------------------------------------ */
+@utility eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.2rem + 3.4vw, 4rem); /* inner-page H1 and closing statements: 36–64px */
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.875rem, 1.2rem + 2.3vw, 2.875rem); /* emphasised section H2: 30–46px */
+  line-height: 1.16;
+  letter-spacing: -0.016em;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8125rem, 1.3rem + 1.8vw, 2.625rem); /* section H2: 29–42px */
+  line-height: 1.18;
+  letter-spacing: -0.014em;
+}
+
+/* Motion pre-state ----------------------------------------------------
+   Elements animated by GSAP are hidden only while JS is confirmed to be
+   running (class set by the inline script in layout.tsx) and the visitor
+   has not asked for reduced motion. Without JS everything stays visible. */
+@media (prefers-reduced-motion: no-preference) {
+  html.motion-ready [data-anim] {
+    visibility: hidden;
+  }
+}
+
+/* Animated underline used by nav links */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after,
+.link-underline[aria-current="page"]::after,
+.link-underline[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Homepage hero slider */
+.hero-progress-fill {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+@keyframes hero-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes hero-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes hero-line { from { transform: translateY(112%); } to { transform: none; } }
+@keyframes hero-zoom { from { scale: 1.05; } to { scale: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-progress-fill { animation: hero-progress var(--hero-duration, 7000ms) linear forwards; }
+  /* First paint only: pure CSS so nothing depends on JavaScript or hydration. */
+  .hero-intro-rise { animation: hero-rise 0.9s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-intro-line { animation: hero-line 1.1s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-intro-zoom { animation: hero-zoom 2.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
+
+/* Document request dialog */
+@keyframes otp-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes rd-check-draw {
+  from { stroke-dashoffset: 26; }
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .otp-shake { animation: otp-shake 0.45s ease-in-out; }
+  .rd-check { stroke-dasharray: 26; animation: rd-check-draw 0.7s 0.15s ease-out both; }
+}
+
+/* Scroll cue */
+@keyframes cue-run {
+  0% {
+    transform: translateY(-101%);
+  }
+  55%,
+  100% {
+    transform: translateY(101%);
+  }
+}
+.scroll-cue-run {
+  animation: cue-run 2.4s var(--ease-silk) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-run {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Image that dissolves towards the left and bottom edges (used behind light sections) */
+.mask-fade-left-bottom {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 45%),
+    linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 45%),
+    linear-gradient(to bottom, #000 55%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.mask-fade-left {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 50%);
+  mask-image: linear-gradient(to right, transparent, #000 50%);
+}
+
+/* Hero headline: short statement set very large */
+@utility display-hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* Homepage hero H1 only. 38px on phones, ~58px at 768, ~72px at 1024, ~86px at 1280,
+     ~94px at 1440 and exactly 120px from 1920px upwards. */
+  font-size: clamp(2.375rem, 1.04rem + 5.3833vw, 7.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}

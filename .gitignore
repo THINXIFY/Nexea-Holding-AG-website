@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.*
+.yarn
+
+# Next.js build output and generated files
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+
+# Environment files: never commit secrets. Only the documented template is tracked.
+.env
+.env.*
+!.env.example
+
+# Logs and debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Private document delivery: runtime OTP store, and the confidential PDFs emailed on request.
+# Add the PDFs on the server (see private/documents/README.md); they are intentionally not in version control.
+.data
+private/documents/*
+!private/documents/README.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+
+# Misc
+.vercel
+coverage
+*.pem
