@@ -181,6 +181,7 @@ code and, after verifying it, receives the PDFs by email.
 │   ├── data/                   Typed content: company, navigation, sectors, services, team, hero slides, legal text
 │   ├── hooks/                  useMotion (GSAP + reduced motion), useMediaQuery
 │   └── lib/                    GSAP setup, animation helpers, validation, mailer, rate limiting, documents-access
+├── deploy/                     Hostinger VPS deployment: PM2, Nginx, deploy / rollback scripts
 ├── .env.example                Environment variable template (names only)
 ├── eslint.config.mjs
 ├── next.config.ts
@@ -235,16 +236,134 @@ Without email credentials the forms respond with an honest "not configured" erro
 ```bash
 npm run typecheck && npm run lint
 npm run build
-npm run start            # or: npx next start -p 3000
+npm run start            # next start; add -H 127.0.0.1 -p 3700 to bind to localhost on a server
 ```
 
-- Run on a **persistent Node.js server** (VM, container, or a platform that keeps one long-lived process). The in-memory
-  rate limiter and the file-backed OTP store are per-process.
-- Set the environment variables on the host, copy the approved PDFs into `private/documents/`, and make sure the
-  sender domain is verified in Resend.
-- Serve over HTTPS behind a reverse proxy that forwards `X-Forwarded-For` (used for rate limiting).
-- Before launch: confirm the canonical host, review the legal texts with qualified Swiss counsel, and verify the
-  team email addresses.
+Requirements: **Node.js 20.9+** (Node 22 LTS recommended), a **persistent Node.js server** (the rate limiter and the
+file-backed OTP store are per-process, so run exactly one instance), HTTPS behind a reverse proxy that forwards the
+client address, and a Resend-verified sender domain.
+
+## Hostinger VPS deployment
+
+Target: Ubuntu VPS, Nginx → Next.js on `127.0.0.1:3700`, PM2 (process `nexea-holding`), Let's Encrypt SSL, release-based
+deployments from GitHub `main`. Everything lives in `deploy/`:
+
+| File | Purpose |
+| --- | --- |
+| `deploy/server-setup.sh` | One-time, idempotent: read-only server report, dedicated `nexea` user, directories, locked-down env file |
+| `deploy/deploy.sh` | Fetch `main`, build a new release, switch atomically, restart PM2, health-check, auto-rollback on failure |
+| `deploy/rollback.sh` | Instantly switch back to the previous (or a named) release |
+| `deploy/ecosystem.config.cjs` | PM2 definition (single instance, 127.0.0.1:3700, restart policy, memory limit, logs) |
+| `deploy/nginx/nexea-holding.http.conf` | Nginx site before the certificate exists |
+| `deploy/nginx/nexea-holding.https.conf` | Final Nginx site: HTTPS, www → apex redirect, HTTP → HTTPS |
+
+Server layout (`/var/www/nexea-holding`):
+
+```text
+repo/       git clone used only as a fetch source (never reset or edited)
+releases/   one folder per deployment (<timestamp>-<commit>); the last 3 are kept
+current     symlink to the live release
+shared/     PERSISTENT, never overwritten by a deployment
+  ├── .env.local     secrets (mode 600), linked into every release
+  ├── data/          OTP challenge store
+  ├── documents/     confidential PDFs for the document-request feature (never web-served, never in Git)
+  └── logs/          PM2 logs
+```
+
+### First-time setup (run on the VPS)
+
+The VPS may host other sites; none of these steps replaces existing configuration. Steps 1–2 are read-only.
+
+```bash
+# 1. Check what is already there (as root). Node must be >= 20.9; port 3700 must be free.
+node -v; pm2 -v; nginx -v; certbot --version
+ss -ltnp | grep -E ':3700\b' || echo "port 3700 free"
+ls /etc/nginx/sites-enabled; free -h; df -h /
+
+# 2. Prerequisites that are missing (only run the lines you need)
+#    Node 22 LTS:  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && sudo apt-get install -y nodejs
+#    PM2:          sudo npm install -g pm2
+#    Certbot:      sudo apt-get install -y certbot
+#    A build needs ~1.5 GB RAM; on a small VPS add swap first.
+
+# 3. User, directories and the server-side env file (as root)
+sudo bash -c 'curl -fsSL https://raw.githubusercontent.com/THINXIFY/Nexea-Holding-AG-website/main/deploy/server-setup.sh -o /tmp/nexea-setup.sh && less /tmp/nexea-setup.sh'   # review, then:
+sudo bash /tmp/nexea-setup.sh
+
+# 4. Secrets: paste a NEWLY ROTATED Resend key (never reuse a key that was ever exposed)
+sudo -u nexea nano /var/www/nexea-holding/shared/.env.local
+
+# 5. The approved PDFs (confidential: shared/documents only, never public)
+#    e.g. scp *.pdf you@server:/tmp/ then:
+sudo install -m 640 -o nexea -g nexea /tmp/*.pdf /var/www/nexea-holding/shared/documents/ && rm /tmp/*.pdf
+
+# 6. First deployment (as the nexea user)
+sudo -u nexea bash -c 'cd /var/www/nexea-holding && git clone https://github.com/THINXIFY/Nexea-Holding-AG-website.git repo && bash repo/deploy/deploy.sh'
+curl -I http://127.0.0.1:3700        # expect 200 before touching nginx
+
+# 7. PM2 survives reboots (prints one command to run as root; run it)
+sudo -u nexea pm2 startup systemd -u nexea --hp /home/nexea
+sudo -u nexea pm2 save
+```
+
+### Nginx and SSL
+
+DNS first: `nexea-holding.com` and `www.nexea-holding.com` must have **A records → 2.25.169.72** and no stale
+`AAAA` record. Do not change MX, SPF, DKIM or DMARC records.
+
+```bash
+# A. HTTP site (adds one isolated file; the global config and other sites are untouched)
+sudo cp /var/www/nexea-holding/current/deploy/nginx/nexea-holding.http.conf /etc/nginx/sites-available/nexea-holding.conf
+sudo ln -s /etc/nginx/sites-available/nexea-holding.conf /etc/nginx/sites-enabled/nexea-holding.conf
+sudo nginx -t && sudo systemctl reload nginx
+curl -I http://nexea-holding.com                      # expect 200 from the app
+
+# B. Certificate (covers both names), then enable the HTTPS site
+sudo certbot certonly --webroot -w /var/www/certbot -d nexea-holding.com -d www.nexea-holding.com
+sudo cp /var/www/nexea-holding/current/deploy/nginx/nexea-holding.https.conf /etc/nginx/sites-available/nexea-holding.conf
+sudo nginx -t && sudo systemctl reload nginx
+
+# C. Verify
+curl -I https://nexea-holding.com          # 200
+curl -I https://www.nexea-holding.com      # 301 -> https://nexea-holding.com/
+curl -I http://nexea-holding.com           # 301 -> https://nexea-holding.com/
+sudo certbot renew --dry-run               # automatic renewal works (certbot's systemd timer / cron)
+```
+
+Port 3700 is bound to 127.0.0.1 only; open just 80 and 443 in the firewall.
+
+### Updating from GitHub
+
+```bash
+sudo -u nexea bash /var/www/nexea-holding/repo/deploy/deploy.sh          # deploy the latest main
+sudo -u nexea bash /var/www/nexea-holding/repo/deploy/deploy.sh --status # deployed commit, releases, PM2, local response
+sudo -u nexea bash /var/www/nexea-holding/repo/deploy/deploy.sh --force  # rebuild the same commit
+```
+
+`deploy.sh` fetches `main` (no reset, no force), exports the commit into a new release, runs `npm ci` and
+`npm run build`, switches `current` atomically, reloads PM2 and health-checks `127.0.0.1:3700`. If the build or the
+health check fails, the previous release keeps serving (or is restored automatically). `shared/` is never touched.
+
+### Rollback
+
+```bash
+ls -1t /var/www/nexea-holding/releases                                         # newest first
+sudo -u nexea bash /var/www/nexea-holding/repo/deploy/rollback.sh              # previous release
+sudo -u nexea bash /var/www/nexea-holding/repo/deploy/rollback.sh <release-folder-name>
+```
+
+### Operations
+
+```bash
+sudo -u nexea pm2 status                  # process: nexea-holding
+sudo -u nexea pm2 logs nexea-holding      # or: tail -f /var/www/nexea-holding/shared/logs/nexea-*.log
+sudo -u nexea pm2 install pm2-logrotate   # keep logs small (optional)
+sudo systemctl status nginx
+```
+
+Security notes: the app runs as the unprivileged `nexea` user; `shared/.env.local` is mode 600; the confidential PDFs live
+in `shared/documents/` outside any web root; Nginx overwrites `X-Forwarded-For` so clients cannot spoof their address for
+rate limiting; no HSTS header is set until all subdomains are confirmed to support HTTPS.
 
 ## Content and maintenance
 
