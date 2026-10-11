@@ -48,7 +48,7 @@ export function PartnersHero() {
       <div className="container-nx relative flex flex-1 flex-col justify-center pb-12 pt-32 sm:pb-14 lg:pt-36">
         <p data-anim data-ph-eyebrow className="eyebrow mb-5 flex items-center gap-4 text-platinum">
           <span aria-hidden data-ph-rule className="h-px w-10 shrink-0 origin-left bg-silver/70" />
-          Nexea / Partnerships
+          Nexea / Partners
         </p>
 
         <MaskedLines id="partners-hero-heading" as="h1" lines={["Stronger Connections.", "Broader Opportunities."]} className="display-xl" />
@@ -60,7 +60,7 @@ export function PartnersHero() {
 
         <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
           <div data-anim data-ph-btn className="flex">
-            <Button href="#our-partners" variant="solid-light" sweep className="w-full sm:w-auto">Explore Partnerships</Button>
+            <Button href="#our-partners" variant="solid-light" sweep className="w-full sm:w-auto">Explore Partners</Button>
           </div>
           <div data-anim data-ph-btn className="flex">
             <Button href="/contact?type=partnership" variant="outline-light" sweep className="w-full sm:w-auto">Become a Partner</Button>

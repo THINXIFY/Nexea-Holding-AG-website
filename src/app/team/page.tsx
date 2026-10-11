@@ -31,7 +31,7 @@ export default function TeamPage() {
         headline={["Let’s Start", "a Conversation."]}
         lead="Connect with Nexea Holding AG regarding corporate enquiries, potential business opportunities, or strategic collaborations."
         primary={{ label: "Contact Nexea", href: "/contact" }}
-        secondary={{ label: "Explore Partnerships", href: "/partnerships" }}
+        secondary={{ label: "Explore Partners", href: "/partnerships" }}
         microtext={["Leadership", "Governance", "Long-Term Perspective"]}
         image={{ src: "/images/team-cta.jpg", position: "50% 55%", filter: "[filter:saturate(0.7)_brightness(1.25)]" }}
         cols="5-7"

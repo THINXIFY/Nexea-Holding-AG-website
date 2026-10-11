@@ -52,7 +52,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
     headline: ["Connecting Opportunities.", "Creating Value."],
     description:
       "We believe enduring value begins with thoughtful decisions, meaningful relationships, and opportunities that reach across markets and industries.",
-    primary: { label: "Explore Partnerships", href: "/partnerships" },
+    primary: { label: "Explore Partners", href: "/partnerships" },
     secondary: { label: "Get in Touch", href: "/contact" },
     image: { src: "/images/slider/slide-3.png", position: { mobile: "88% 50%", tablet: "80% 50%", desktop: "72% 50%" } },
   },

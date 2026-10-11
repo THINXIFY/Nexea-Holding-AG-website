@@ -144,7 +144,7 @@ export function Partnerships() {
             </div>
             <div data-anim data-partners-cta className="flex">
               <Button href="/partnerships" variant="outline-dark" className="w-full sm:w-auto">
-                Explore Partnerships
+                Explore Partners
               </Button>
             </div>
           </div>

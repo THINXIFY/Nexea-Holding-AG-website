@@ -7,7 +7,7 @@ import { PartnerCollaborators } from "@/components/partnerships/PartnerCollabora
 import { PartnerFramework } from "@/components/partnerships/PartnerFramework";
 import { PartnersCta } from "@/components/partnerships/PartnersCta";
 
-const TITLE = "Partnerships & Our Partners | Nexea Holding AG";
+const TITLE = "Partners | Nexea Holding AG";
 const DESCRIPTION =
   "Explore Nexea Holding AG's approach to investment partnerships, strategic business alliances, international collaboration, and corporate opportunities.";
 

@@ -10,7 +10,7 @@ export function SvCta() {
       lead="Every business opportunity begins with understanding the objectives behind it."
       body="Connect with Nexea Holding AG to introduce a strategic proposal, explore a potential collaboration, or discuss opportunities aligned with its investment interests."
       primary={{ label: "Contact Nexea", href: "/contact" }}
-      secondary={{ label: "Explore Partnerships", href: "/partnerships" }}
+      secondary={{ label: "Explore Partners", href: "/partnerships" }}
       microtext={["Strategic Perspective", "International Outlook"]}
       image={{ src: "/images/svc-cta.jpg", position: "62% 50%", filter: "[filter:saturate(0.6)_brightness(1.3)]" }}
       cols="6-6"

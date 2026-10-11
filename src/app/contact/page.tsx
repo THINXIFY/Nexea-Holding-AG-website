@@ -34,7 +34,7 @@ export default function ContactPage() {
           eyebrow="Partnerships & Opportunities"
           headline={["Have an Opportunity", "in Mind?"]}
           lead="Explore potential collaborations, business opportunities, and corporate partnerships aligned with Nexea's investment interests."
-          primary={{ label: "Explore Partnerships", href: "/partnerships" }}
+          primary={{ label: "Explore Partners", href: "/partnerships" }}
           secondary={{ label: "Submit an Enquiry", href: "#enquiry-form" }}
           microtext={["Swiss Foundations", "International Perspective"]}
           image={{ src: "/images/contact-cta.jpg", position: "50% 45%", filter: "[filter:saturate(0.7)_brightness(1.3)]" }}

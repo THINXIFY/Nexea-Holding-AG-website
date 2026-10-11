@@ -10,9 +10,10 @@ import { marqueePartners, PARTNER_PREVIEW_NOTICE, SHOW_PREVIEW_NOTICE, type Part
 import { MaskedLines } from "@/components/ui/MaskedLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-/** Scroll speed. One full cycle (one set of logos) takes at least 30s and scales with the number of logos. */
+/** Scroll speed. One full cycle (one set of logos) takes 30-38s, scaling with the number of logos. */
 const SPEED_PX_PER_S = 55;
 const MIN_CYCLE_S = 30;
+const MAX_CYCLE_S = 38;
 /** Every logo sits in an identical zone so the loop length is independent of image loading. */
 const ZONE = "h-24 w-44 sm:h-28 sm:w-52 lg:w-60 xl:w-64";
 
@@ -29,7 +30,7 @@ function LogoZone({ partner, decorative }: { partner: Partner; decorative: boole
       draggable={false}
       // Small files, and the loop must never reveal a logo that has not loaded yet.
       loading="eager"
-      className={`h-10 w-auto max-w-full object-contain sm:h-11 lg:h-12 ${partner.keepColor ? "" : "[filter:grayscale(1)]"} opacity-80 transition-opacity duration-500 group-hover/logo:opacity-100`}
+      className={`h-10 w-auto max-w-full object-contain sm:h-11 lg:h-12 ${partner.keepColor ? "" : "[filter:grayscale(1)] group-hover/logo:[filter:grayscale(0)]"} opacity-90 transition-[opacity,filter,transform] duration-500 ease-out group-hover/logo:scale-[1.04] group-hover/logo:opacity-100 motion-reduce:transition-none`}
     />
   );
   return (
@@ -108,7 +109,7 @@ export function PartnerMarquee() {
       tween?.kill();
       // The second set starts exactly one set-width after the first, so moving the track by -w and
       // restarting at 0 is visually identical: a seamless loop with no pause or snap.
-      tween = gsap.fromTo(tr, { x: 0 }, { x: -w, duration: Math.max(MIN_CYCLE_S, w / SPEED_PX_PER_S), ease: "none", repeat: -1 });
+      tween = gsap.fromTo(tr, { x: 0 }, { x: -w, duration: Math.min(MAX_CYCLE_S, Math.max(MIN_CYCLE_S, w / SPEED_PX_PER_S)), ease: "none", repeat: -1 });
       tween.progress(progress).timeScale(scale);
       apply();
     };

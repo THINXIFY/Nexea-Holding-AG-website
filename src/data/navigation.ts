@@ -17,7 +17,7 @@ const ALL_NAV_ITEMS: readonly NavItem[] = [
   { label: "Investments", href: "/investments", mega: "investments" },
   { label: "Services", href: "/services", mega: "services" },
   { label: "Team", href: "/team" },
-  { label: "Partnerships", href: "/partnerships" },
+  { label: "Our Partners", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
 ];
 

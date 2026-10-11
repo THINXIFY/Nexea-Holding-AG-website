@@ -7,7 +7,7 @@ import { Wordmark } from "@/components/ui/Wordmark";
 const COMPANY_LINKS: readonly FooterLink[] = [
   { label: "About Nexea", href: "/about" },
   { label: "Our Team", href: "/team" },
-  { label: "Partnerships", href: "/partnerships" },
+  { label: "Our Partners", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
 ];
 

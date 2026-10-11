@@ -50,7 +50,7 @@ export function SvAudiences() {
             priorities of businesses, investors, and strategic collaborators.
           </p>
           <div data-anim data-sw-copy className="mt-8">
-            <Button href="/partnerships" variant="solid-dark" sweep>Explore Partnerships</Button>
+            <Button href="/partnerships" variant="solid-dark" sweep>Explore Partners</Button>
           </div>
         </div>
 
