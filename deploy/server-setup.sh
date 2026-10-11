@@ -43,7 +43,7 @@ else
 fi
 
 install -d -o "$APP_USER" -g "$APP_USER" -m 755 "$BASE" "$BASE/releases"
-install -d -o "$APP_USER" -g "$APP_USER" -m 750 "$BASE/shared" "$BASE/shared/data" "$BASE/shared/documents" "$BASE/shared/logs"
+install -d -o "$APP_USER" -g "$APP_USER" -m 750 "$BASE/shared" "$BASE/shared/data" "$BASE/shared/logs"
 install -d -m 755 /var/www/certbot
 
 ENV_FILE="$BASE/shared/.env.local"
@@ -61,7 +61,7 @@ CONTACT_FROM_EMAIL=Nexea Holding AG <info@nexea-holding.com>
 CONTACT_TO_EMAIL=info@nexea-holding.com
 OTP_HASH_SECRET=$SECRET
 OTP_STORE_PATH=$BASE/shared/data/otp-challenges.json
-DOCUMENTS_DIR=$BASE/shared/documents
+# The PDFs ship with the repository (private/documents/) and are deployed with every release; DOCUMENTS_DIR is optional.
 EOF
   chown "$APP_USER:$APP_USER" "$ENV_FILE"
   chmod 600 "$ENV_FILE"
@@ -72,7 +72,7 @@ cat <<EOF
 
 == Done. Next steps (as '$APP_USER' unless stated):
  1. Paste the NEW Resend key:        sudo -u $APP_USER nano $ENV_FILE
- 2. Copy the approved PDFs into:     $BASE/shared/documents/   (owner $APP_USER, never inside a web-served folder)
+ 2. The PDFs come from the repository (private/documents/); nothing to copy.
  3. First deploy:                    sudo -u $APP_USER bash -c 'cd $BASE && git clone https://github.com/THINXIFY/Nexea-Holding-AG-website.git repo && bash repo/deploy/deploy.sh'
  4. PM2 on boot (as root, once):     sudo env PATH=\$PATH:\$(dirname \$(command -v node)) \$(command -v pm2) startup systemd -u $APP_USER --hp /home/$APP_USER
  5. Nginx + SSL: follow "Hostinger VPS deployment" in README.md

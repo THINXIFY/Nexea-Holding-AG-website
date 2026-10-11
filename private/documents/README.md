@@ -1,10 +1,11 @@
-# Private documents
+# Documents emailed on request
 
-Put the PDF files that should be emailed to verified visitors in this folder
-(only `.pdf` files are used; hidden files and other types are ignored).
+The PDF files in this folder are attached to the "Request Private Documents" email that
+verified visitors receive. They are committed to the repository and deployed with the code.
 
-Every PDF in this folder is attached to the "Request Private Documents" email,
-so only place files here that are approved for that audience. The folder is not
-served by the website. To use another location set `DOCUMENTS_DIR`.
-
-Limits: total size of all PDFs must stay under 28 MB (email provider limit).
+- Only `.pdf` files are used; hidden files and other types are ignored.
+- **Every** PDF here is attached, so only keep files that are approved for that audience.
+- The folder is outside `public/`, so the website never serves the files directly.
+- Total size of all PDFs must stay under 28 MB (email provider limit).
+- To change what visitors receive: add, replace or delete PDFs here, commit, and deploy.
+- Optional: set `DOCUMENTS_DIR` to use another folder; it falls back to this one when empty.

@@ -22,11 +22,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Private document delivery: runtime OTP store, and the confidential PDFs emailed on request.
-# Add the PDFs on the server (see private/documents/README.md); they are intentionally not in version control.
+# Private document delivery: runtime OTP store (the PDFs in private/documents/ ARE tracked and deployed with the code)
 .data
-private/documents/*
-!private/documents/README.md
 
 # OS / editor
 .DS_Store

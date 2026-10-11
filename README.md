@@ -137,8 +137,10 @@ code and, after verifying it, receives the PDFs by email.
 - No code is sent unless documents are available to deliver; failures are reported honestly (never a false success).
 - Glass dialog UI: `src/components/documents/`. Server: `src/app/api/request-documents/` and
   `src/lib/documents-access/`.
-- **Documents:** place the PDFs in `private/documents/` on the server. They are deliberately **not** committed to Git
-  (see `.gitignore` and `private/documents/README.md`). Every PDF in the folder is attached.
+- **Documents:** the PDFs live in `private/documents/` and are committed to the repository, so every deployment ships
+  them with the code. The folder is outside `public/`, so the website never serves the files directly; they are only
+  attached to the verification email. Every PDF in the folder is attached. To change what visitors receive, add, replace
+  or delete PDFs there and deploy.
 - Pending codes are stored in a file (`.data/`, git-ignored). This needs a single persistent Node server; for
   serverless or multi-instance hosting replace `src/lib/documents-access/store.ts` with a shared store (Redis, database).
 
@@ -167,7 +169,7 @@ code and, after verifying it, receives the PDFs by email.
 ├── public/
 │   └── images/                 Photography, logos, hero slider images (slider/), partner logos (partners/)
 ├── private/
-│   └── documents/              PDFs emailed on request (git-ignored; see README inside)
+│   └── documents/              PDFs emailed on request (tracked; never web-served)
 ├── src/
 │   ├── app/                    App Router routes, layout, sitemap, icons, API route handlers
 │   │   ├── api/contact/
@@ -225,7 +227,7 @@ Copy `.env.example` to `.env.local`. **Never commit `.env.local` or real values.
 | `OTP_MAX_ATTEMPTS` | No | Wrong attempts allowed per code (default 5) |
 | `OTP_RESEND_COOLDOWN_SECONDS` | No | Delay before a code can be resent (default 60) |
 | `DOCUMENTS_FROM_EMAIL` | No | Separate sender for document emails (defaults to `CONTACT_FROM_EMAIL`) |
-| `DOCUMENTS_DIR` | No | Folder containing the PDFs (default `./private/documents`) |
+| `DOCUMENTS_DIR` | No | Optional override folder for the PDFs; falls back to `./private/documents` when empty or unset |
 | `OTP_STORE_PATH` | No | Challenge store file (default `./.data/otp-challenges.json`) |
 | `RESEND_API_URL` | No | Provider endpoint override (testing only) |
 
@@ -266,7 +268,6 @@ current     symlink to the live release
 shared/     PERSISTENT, never overwritten by a deployment
   ├── .env.local     secrets (mode 600), linked into every release
   ├── data/          OTP challenge store
-  ├── documents/     confidential PDFs for the document-request feature (never web-served, never in Git)
   └── logs/          PM2 logs
 ```
 
@@ -293,9 +294,7 @@ sudo bash /tmp/nexea-setup.sh
 # 4. Secrets: paste a NEWLY ROTATED Resend key (never reuse a key that was ever exposed)
 sudo -u nexea nano /var/www/nexea-holding/shared/.env.local
 
-# 5. The approved PDFs (confidential: shared/documents only, never public)
-#    e.g. scp *.pdf you@server:/tmp/ then:
-sudo install -m 640 -o nexea -g nexea /tmp/*.pdf /var/www/nexea-holding/shared/documents/ && rm /tmp/*.pdf
+# 5. (nothing to copy: the PDFs ship with the repository in private/documents/)
 
 # 6. First deployment (as the nexea user)
 sudo -u nexea bash -c 'cd /var/www/nexea-holding && git clone https://github.com/THINXIFY/Nexea-Holding-AG-website.git repo && bash repo/deploy/deploy.sh'
@@ -361,8 +360,8 @@ sudo -u nexea pm2 install pm2-logrotate   # keep logs small (optional)
 sudo systemctl status nginx
 ```
 
-Security notes: the app runs as the unprivileged `nexea` user; `shared/.env.local` is mode 600; the confidential PDFs live
-in `shared/documents/` outside any web root; Nginx overwrites `X-Forwarded-For` so clients cannot spoof their address for
+Security notes: the app runs as the unprivileged `nexea` user; `shared/.env.local` is mode 600; the PDFs live in
+`private/documents/` (outside `public/`, never web-served); Nginx overwrites `X-Forwarded-For` so clients cannot spoof their address for
 rate limiting; no HSTS header is set until all subdomains are confirmed to support HTTPS.
 
 ## Content and maintenance
