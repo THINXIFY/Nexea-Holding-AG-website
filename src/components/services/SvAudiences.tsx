@@ -46,7 +46,7 @@ export function SvAudiences() {
             className="display-md mt-6 text-ink sm:mt-8"
           />
           <p data-anim data-sw-copy className="mt-7 max-w-[30rem] text-[1.0625rem] leading-[1.6]">
-            Our proposed consulting and partnership pathways are designed around the distinct
+            Our consulting and partnership pathways are designed around the distinct
             priorities of businesses, investors, and strategic collaborators.
           </p>
           <div data-anim data-sw-copy className="mt-8">

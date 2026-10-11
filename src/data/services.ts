@@ -87,7 +87,7 @@ export const SERVICE_AREAS: readonly ServiceArea[] = [
     description:
       "Management and assessment of Nexea’s own investment assets, corporate participations, and long-term portfolio interests.",
     capabilities: ["Portfolio Review", "Participation Oversight", "Asset Assessment", "Long-Term Holding Strategy"],
-    note: "This refers to the management of Nexea’s own assets only. It is not asset management for third parties or clients.",
+    note: "Focused on the management of Nexea’s own assets and participations.",
     image: { src: "/images/ab-real-assets.jpg", alt: "Aerial view of a dense financial district of skyscrapers", position: "50% 40%" },
   },
   {

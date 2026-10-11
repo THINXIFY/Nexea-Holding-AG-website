@@ -56,7 +56,7 @@ export function SvIndustries() {
               industries.
             </p>
             <p data-anim data-sx-copy>
-              Nexea&rsquo;s proposed expertise spans investment themes across established assets,
+              Nexea&rsquo;s expertise spans investment themes across established assets,
               productive enterprises, and emerging markets.
             </p>
           </div>

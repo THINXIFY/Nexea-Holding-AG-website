@@ -68,7 +68,7 @@ export function SvCapabilities() {
           </div>
           <p data-anim data-sc-copy className="max-w-[34rem] text-[1.0625rem] leading-[1.6] text-platinum lg:col-span-5 lg:pb-1">
             Effective decision-making connects commercial insight with clearly defined objectives.
-            Our proposed capability framework brings together four complementary disciplines.
+            Our capability framework brings together four complementary disciplines.
           </p>
         </div>
 

@@ -233,10 +233,6 @@ export function Approach() {
           <div data-anim data-approach-foot>
             <Button href="/investments#approach" variant="solid-dark">Explore Our Investment Approach</Button>
           </div>
-          <p data-anim data-approach-foot className="max-w-[36rem] text-sm leading-[1.55] text-muted">
-            A proposed evaluation framework. It does not describe a guaranteed outcome or an
-            established underwriting process.
-          </p>
         </div>
       </div>
     </section>

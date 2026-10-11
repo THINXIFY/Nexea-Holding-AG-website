@@ -44,8 +44,8 @@ export function SvIntro() {
               commercial potential.
             </p>
             <p data-anim data-si-copy>
-              Building on its investment-oriented perspective, Nexea&rsquo;s proposed advisory
-              offering brings together strategic analysis, business insight, and an international
+              Building on its investment-oriented perspective, Nexea&rsquo;s advisory
+              perspective brings together strategic analysis, business insight, and an international
               outlook.
             </p>
           </div>

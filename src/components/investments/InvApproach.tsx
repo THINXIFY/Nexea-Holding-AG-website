@@ -70,10 +70,6 @@ export function InvApproach() {
             <div data-anim data-ap-copy className="mt-8">
               <Button href="/contact?type=investment" variant="solid-dark" sweep>Discuss an Opportunity</Button>
             </div>
-            <p data-anim data-ap-copy className="mt-8 hidden max-w-[26rem] border-t border-line pt-5 text-sm leading-[1.55] text-muted lg:block">
-              A proposed process for considering opportunities. It does not imply approval, funding,
-              or a commitment to any proposal.
-            </p>
           </div>
         </div>
 
@@ -102,12 +98,6 @@ export function InvApproach() {
             );
           })}
         </ol>
-      </div>
-      <div className="container-nx lg:hidden">
-        <p className="mt-10 border-t border-line pt-5 text-sm leading-[1.55] text-muted">
-          A proposed process for considering opportunities. It does not imply approval, funding,
-          or a commitment to any proposal.
-        </p>
       </div>
     </section>
   );

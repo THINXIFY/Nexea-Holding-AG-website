@@ -81,14 +81,16 @@ export function Expertise() {
               and the forces transforming global industries.
             </p>
             <p data-anim data-exp-copy className="text-[1.0625rem] leading-[1.6] sm:text-[1.125rem]">
-              Alongside its investment activities, Nexea is developing a proposed strategic
-              consulting offering focused on business evaluation, corporate strategy, transactions,
-              and innovation.
+              Alongside its investment activities, Nexea brings strategic insight to business
+              evaluation, corporate strategy, transactions, and innovation.
             </p>
           </div>
 
           <div data-anim data-exp-copy className="mt-10 sm:mt-12">
-            <Button href="/services" variant="solid-dark">Explore Our Expertise</Button>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/services" variant="solid-dark" className="w-full sm:w-auto">Explore Our Expertise</Button>
+              <Button href="/service-navigator" variant="outline-dark" sweep className="w-full sm:w-auto">Find Your Service</Button>
+            </div>
           </div>
         </div>
 
@@ -99,7 +101,7 @@ export function Expertise() {
             data-exp-copy
             className="eyebrow mb-5 flex items-center justify-between text-[0.6875rem] text-steel"
           >
-            <span>Proposed consulting offering</span>
+            <span>Strategic expertise</span>
             <span aria-hidden>01 &ndash; 06</span>
           </p>
 

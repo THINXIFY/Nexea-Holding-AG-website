@@ -112,9 +112,6 @@ export function Philosophy() {
               Our investment perspective combines a fundamental understanding of businesses,
               disciplined evaluation, independent thinking, and long-term considerations.
             </p>
-            <p data-anim data-phil-copy className="mt-3 max-w-[30rem] text-sm leading-[1.5] text-[#b1c0cc]">
-              A proposed philosophy, subject to company approval.
-            </p>
           </div>
         </div>
 

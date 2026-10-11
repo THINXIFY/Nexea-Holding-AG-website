@@ -127,7 +127,7 @@ export function Principles() {
             data-pr-copy
             className="mt-7 max-w-[30rem] text-[1.0625rem] leading-[1.6] text-platinum"
           >
-            Our proposed investment approach emphasizes independent judgment, careful evaluation, and
+            Our investment approach emphasizes independent judgment, careful evaluation, and
             a long-term view of business opportunities.
           </p>
           <p

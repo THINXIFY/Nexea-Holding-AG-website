@@ -9,7 +9,7 @@ import { MaskedLines } from "@/components/ui/MaskedLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const STAGES = [
-  { n: "01", icon: Users, title: "Connect", text: "Introduce the organization and proposed opportunity." },
+  { n: "01", icon: Users, title: "Connect", text: "Introduce the organization and the opportunity." },
   { n: "02", icon: FileSearch, title: "Understand", text: "Establish objectives, interests, and commercial context." },
   { n: "03", icon: Compass, title: "Explore", text: "Consider strategic fit and collaboration possibilities." },
   { n: "04", icon: Flag, title: "Define", text: "Discuss appropriate next steps where interests align." },
@@ -66,7 +66,7 @@ export function PartnerFramework() {
             <MaskedLines id="fw-heading" lines={["From Introduction", "to Shared Understanding."]} className="display-lg mt-5 sm:mt-6" />
           </div>
           <p data-anim data-fw-intro className="max-w-[28rem] text-[1.0625rem] leading-[1.6] text-platinum lg:col-span-5 lg:pb-2">
-            A proposed framework for exploring potential business relationships through careful assessment and meaningful communication.
+            A framework for building business relationships through careful assessment and meaningful communication.
           </p>
         </div>
 

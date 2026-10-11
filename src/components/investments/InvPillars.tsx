@@ -59,7 +59,7 @@ export function InvPillars() {
             />
           </div>
           <p data-anim data-pl-intro className="max-w-[32rem] text-[1.0625rem] leading-[1.6] lg:col-span-5 lg:pb-2">
-            Our proposed investment landscape is organized around four strategic themes, bringing
+            Our investment landscape is organized around four strategic themes, bringing
             together established sectors and emerging opportunities.
           </p>
         </div>

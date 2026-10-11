@@ -48,7 +48,7 @@ export function InvOverview() {
               domestic and international markets.
             </p>
             <p data-anim data-ov-copy>
-              Our proposed investment focus spans established asset classes, productive
+              Our investment focus spans established asset classes, productive
               industries, and emerging technologies, reflecting a broad perspective on long-term
               business potential.
             </p>

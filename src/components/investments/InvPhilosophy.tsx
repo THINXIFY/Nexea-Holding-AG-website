@@ -69,7 +69,7 @@ export function InvPhilosophy() {
               fundamentals behind every opportunity.
             </p>
             <p data-anim data-ph-copy>
-              Our proposed philosophy brings together commercial insight, independent judgment,
+              Our philosophy brings together commercial insight, independent judgment,
               and risk awareness.
             </p>
           </div>

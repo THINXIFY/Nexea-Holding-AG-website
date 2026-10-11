@@ -51,7 +51,7 @@ export function InvCriteria() {
             />
           </div>
           <p data-anim data-cr-intro className="max-w-[34rem] text-[1.0625rem] leading-[1.6] lg:col-span-5 lg:pb-2">
-            Every business and asset presents distinct characteristics. Our proposed evaluation
+            Every business and asset presents distinct characteristics. Our evaluation
             criteria focus on understanding commercial potential, financial fundamentals, and
             strategic relevance.
           </p>
@@ -79,10 +79,6 @@ export function InvCriteria() {
             );
           })}
         </ul>
-        <p className="mt-6 max-w-[42rem] border-t border-line pt-5 text-sm leading-[1.55] text-muted">
-          These are proposed considerations for evaluating opportunities. They do not describe a
-          funding programme, guaranteed eligibility, or an automatic approval process.
-        </p>
       </div>
     </section>
   );

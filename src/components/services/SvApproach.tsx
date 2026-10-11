@@ -75,7 +75,7 @@ export function SvApproach() {
             <MaskedLines id="sp-heading" lines={["Clarity at", "Every Stage."]} className="display-md mt-6 text-ink sm:mt-8" />
           </div>
           <p data-anim data-sp-copy className="max-w-[34rem] text-[1.0625rem] leading-[1.6] lg:col-span-6 lg:pb-1">
-            Our proposed strategic approach emphasizes understanding the objective, examining the
+            Our strategic approach emphasizes understanding the objective, examining the
             opportunity, and defining a considered path forward.
           </p>
         </div>

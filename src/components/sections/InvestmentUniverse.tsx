@@ -196,10 +196,6 @@ export function InvestmentUniverse() {
               {current.description}
             </p>
           </div>
-          <p className="mt-4 hidden text-sm leading-[1.55] text-[#b1c0cc]/85 xl:block">
-            Proposed areas of interest, not a record of portfolio holdings or completed
-            investments.
-          </p>
         </div>
 
         {/* Category selector */}
@@ -268,10 +264,6 @@ export function InvestmentUniverse() {
           <Button href="#sectors" variant="solid-light" sweep>
             Explore All Investment Sectors
           </Button>
-          <p className="mt-4 text-sm leading-[1.55] text-[#b1c0cc]/85 xl:hidden">
-            Proposed areas of interest, not a record of portfolio holdings or completed
-            investments.
-          </p>
         </div>
       </div>
     </section>

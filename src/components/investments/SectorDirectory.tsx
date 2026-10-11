@@ -184,7 +184,7 @@ export function SectorDirectory() {
             })}
           </div>
           <p role="status" aria-live="polite" className="font-ui text-[0.8125rem] text-muted">
-            Showing <span className="font-semibold text-ink">{visible.length}</span> of {INVESTMENT_SECTORS.length} proposed sectors
+            Showing <span className="font-semibold text-ink">{visible.length}</span> of {INVESTMENT_SECTORS.length} sectors
           </p>
         </div>
 
@@ -229,10 +229,6 @@ export function SectorDirectory() {
             );
           })}
         </ul>
-        <p className="mt-8 max-w-[40rem] text-sm leading-[1.55] text-muted">
-          These sectors are proposed areas of interest, not a record of portfolio holdings or
-          completed investments.
-        </p>
       </div>
     </section>
   );

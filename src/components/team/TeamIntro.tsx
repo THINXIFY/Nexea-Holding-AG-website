@@ -34,7 +34,7 @@ export function TeamIntro() {
         <div className="lg:col-span-6">
           <SectionLabel data-anim data-ti-label>Our Leadership</SectionLabel>
           <MaskedLines id="ti-heading" lines={["Leadership Built", "on Responsibility."]} className="display-md mt-5 text-ink sm:mt-6" />
-          <p data-anim data-ti-copy className="mt-5 max-w-[32rem] text-[1.0625rem] leading-[1.6]">
+          <p data-anim data-ti-copy className="mt-5 max-w-[32rem] text-[1.0625rem] leading-[1.45]">
             Nexea Holding AG&rsquo;s leadership brings together corporate governance, executive
             management, and an international business perspective.
           </p>

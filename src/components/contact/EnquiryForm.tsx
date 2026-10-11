@@ -69,7 +69,7 @@ export function EnquiryForm() {
   const successRef = useRef<HTMLDivElement>(null);
   const startedAt = useRef<number>(0);
   const uid = useId().replace(/:/g, "");
-  const { type, setType } = useContact();
+  const { type, setType, draft } = useContact();
 
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -80,6 +80,15 @@ export function EnquiryForm() {
   useEffect(() => {
     startedAt.current = Date.now();
   }, []);
+
+  // A consultation request from the Service Navigator suggests a subject and message. It only fills empty fields,
+  // so anything the visitor has already typed is never overwritten.
+  const [appliedDraft, setAppliedDraft] = useState<typeof draft>(null);
+  if (draft && draft !== appliedDraft) {
+    // Adjusting state while rendering (React's supported pattern for state derived from props/context).
+    setAppliedDraft(draft);
+    setValues((p) => ({ ...p, subject: p.subject.trim() ? p.subject : draft.subject, message: p.message.trim() ? p.message : draft.message }));
+  }
 
   useMotion(root, () => {
     const el = root.current;

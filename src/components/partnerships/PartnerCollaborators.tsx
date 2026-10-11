@@ -46,7 +46,7 @@ export function PartnerCollaborators() {
           <SectionLabel data-anim data-pc-label>Potential Collaborators</SectionLabel>
           <MaskedLines id="pc-heading" lines={["Working Across", "Business Ecosystems."]} className="display-lg mt-5 text-ink sm:mt-6" />
           <p data-anim data-pc-copy className="mt-5 max-w-[28rem] text-[1.0625rem] leading-[1.6]">
-            Our proposed partnership interests extend across different stages of business development and commercial activity.
+            Our partnership interests extend across different stages of business development and commercial activity.
           </p>
           <div data-anim data-pc-copy className="mt-7 flex">
             <Button href="/contact?type=partnership#enquiry-form" variant="solid-dark" sweep className="w-full sm:w-auto">

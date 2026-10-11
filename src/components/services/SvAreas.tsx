@@ -106,7 +106,7 @@ export function SvAreas() {
             <MaskedLines id="sa-heading" lines={["Our Services & Expertise."]} className="display-md mt-5 text-ink sm:mt-6" />
           </div>
           <p data-anim data-sa-intro className="max-w-[34rem] text-[1.0625rem] leading-[1.6] lg:col-span-6 lg:max-w-none lg:border-l lg:border-line lg:pb-1 lg:pl-8">
-            Explore Nexea&rsquo;s proposed investment-related and strategic advisory capabilities
+            Explore Nexea&rsquo;s investment-related and strategic advisory expertise
             across corporate investment, business development, transactions, and emerging
             technologies.
           </p>
@@ -190,7 +190,7 @@ export function SvAreas() {
               <div className="p-6 sm:p-9">
                 <div className="flex items-start justify-between gap-6">
                   <p data-sa-detail-item className="eyebrow text-[0.6875rem] text-steel">
-                    Proposed area of expertise · {area.number}
+                    Area of expertise · {area.number}
                   </p>
                   <button
                     type="button"
@@ -212,11 +212,11 @@ export function SvAreas() {
                     </li>
                   ))}
                 </ul>
-                <p data-sa-detail-item className="mt-6 max-w-[40rem] text-sm leading-[1.55] text-muted">
-                  {area.note && <span className="mb-2 block font-semibold text-ink">{area.note}</span>}
-                  A proposed area of expertise. It is not presented as an established, authorised, or
-                  regulated service.
-                </p>
+                {area.note && (
+                  <p data-sa-detail-item className="mt-6 max-w-[40rem] text-sm leading-[1.55] text-muted">
+                    {area.note}
+                  </p>
+                )}
                 {href && (
                   <Link data-sa-detail-item href={href} className="mt-5 inline-flex min-h-11 items-center gap-2 font-ui text-sm font-semibold text-ink">
                     View full page <ArrowRight aria-hidden strokeWidth={1.5} className="size-4" />

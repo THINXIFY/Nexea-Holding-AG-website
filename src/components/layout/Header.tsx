@@ -380,6 +380,11 @@ export function Header() {
                                 View All Services
                               </Link>
                             </li>
+                            <li className="border-t border-white/10">
+                              <Link href="/service-navigator" onClick={closeAll} className="flex min-h-12 items-center py-1 text-[0.9375rem] leading-snug text-platinum">
+                                Which service fits you?
+                              </Link>
+                            </li>
                             {SERVICE_AREAS.map((s) => (
                               <li key={s.slug} className="border-t border-white/10">
                                 <Link href={serviceDeepLink(s.slug)} onClick={closeAll} className="flex min-h-12 items-center py-1 text-[0.9375rem] leading-snug text-platinum">
