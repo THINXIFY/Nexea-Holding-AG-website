@@ -11,6 +11,7 @@ import { ADDRESS_LINES, COMPANY, MAPS_LINK_URL } from "@/data/company";
 import { ACTIVITIES, COMPANY_DESCRIPTION, DISCLOSURES, PRIVACY_NOTICE, LEGAL_RESOURCES, LEGAL_SECTIONS, LEGAL_STATUS_STATEMENT, REGISTERED_PURPOSE, SIGNATORIES } from "@/data/impressum";
 import { CopyAddressButton } from "@/components/contact/CopyAddressButton";
 import { CopyValueButton } from "@/components/impressum/CopyValueButton";
+import { CompanyRegisterButton } from "@/components/documents/CompanyRegisterButton";
 
 const section = (id: string) => LEGAL_SECTIONS.find((s) => s.id === id) ?? LEGAL_SECTIONS[0];
 
@@ -110,6 +111,10 @@ export function LegalSections() {
           </div>
         </div>
         <FactGrid facts={identification} />
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <CompanyRegisterButton />
+          <p className="max-w-[28rem] text-[0.875rem] leading-[1.5] text-muted">View the commercial register information for Nexea Holding AG.</p>
+        </div>
       </section>
 
       {/* 02 */}

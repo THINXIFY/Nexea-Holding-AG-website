@@ -8,6 +8,7 @@ import { ADDRESS_LINES, COMPANY } from "@/data/company";
 import { CopyAddressButton } from "@/components/contact/CopyAddressButton";
 import { Button } from "@/components/ui/Button";
 import { RequestDocumentsButton } from "@/components/documents/RequestDocumentsButton";
+import { CompanyRegisterButton } from "@/components/documents/CompanyRegisterButton";
 import { MaskedLines } from "@/components/ui/MaskedLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -76,6 +77,7 @@ export function CorporateInfo() {
             <Button href="/impressum" variant="outline-dark" size="sm" sweep className="min-h-12!">
               View Impressum
             </Button>
+            <CompanyRegisterButton />
             <RequestDocumentsButton variant="solid-dark" />
           </div>
         </div>
