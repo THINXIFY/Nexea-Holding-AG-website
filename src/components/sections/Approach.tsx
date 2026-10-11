@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Compass, Layers, RefreshCw, Scale, ShieldCheck, type LucideIcon } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { fadeUp, parallax, revealLines } from "@/lib/animations";
@@ -233,6 +234,10 @@ export function Approach() {
           <div data-anim data-approach-foot>
             <Button href="/investments#approach" variant="solid-dark">Explore Our Investment Approach</Button>
           </div>
+          <p data-anim data-approach-foot className="font-ui text-[0.875rem] text-muted">
+            Curious how you think?{" "}
+            <Link href="/investor-challenge" className="font-semibold text-ink underline decoration-silver underline-offset-4 transition-colors hover:text-steel">Take the Investor Challenge</Link>
+          </p>
         </div>
       </div>
     </section>

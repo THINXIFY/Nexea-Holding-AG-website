@@ -344,6 +344,9 @@ export function Header() {
                             <Link href="/investments" onClick={closeAll} className="flex min-h-12 items-center font-ui text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-pure">
                               View All Investments
                             </Link>
+                            <Link href="/investor-challenge" onClick={closeAll} className="flex min-h-12 items-center border-t border-white/10 text-[0.9375rem] text-platinum">
+                              Take the Investor Challenge
+                            </Link>
                             {SECTOR_GROUPS.map((g) => {
                               const subOpen = subGroup === g.id;
                               const sid = `m-sub-${g.id}`;

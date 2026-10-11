@@ -6,6 +6,7 @@ import { SectorDirectory } from "@/components/investments/SectorDirectory";
 import { InvPhilosophy } from "@/components/investments/InvPhilosophy";
 import { InvCriteria } from "@/components/investments/InvCriteria";
 import { InvApproach } from "@/components/investments/InvApproach";
+import { InvChallenge } from "@/components/investments/InvChallenge";
 import { InvCta } from "@/components/investments/InvCta";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function InvestmentsPage() {
       <SectorDirectory />
       <InvPhilosophy />
       <InvCriteria />
+      <InvChallenge />
       <InvApproach />
       <InvCta />
     </main>

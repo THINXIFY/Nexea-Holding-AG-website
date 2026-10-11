@@ -46,16 +46,22 @@ export function InvestmentsMega({ id, open, onNavigate }: PanelProps) {
               <p className="mt-4 font-display text-[2rem] leading-[1.06] text-pure">Invest with Perspective.</p>
               <p className="mt-3 max-w-[17rem] text-[0.9375rem] leading-[1.45] text-platinum/90">Explore the sectors shaping long-term opportunities.</p>
             </div>
-            <dl className="mt-8 hidden gap-8 border-t border-white/10 pt-5 lg:flex">
-              <div>
-                <dd className="font-display text-[2rem] leading-none text-pure">15</dd>
-                <dt className="eyebrow mt-2 text-[0.5625rem] text-silver">Sectors of interest</dt>
-              </div>
-              <div>
-                <dd className="font-display text-[2rem] leading-none text-pure">04</dd>
-                <dt className="eyebrow mt-2 text-[0.5625rem] text-silver">Strategic categories</dt>
-              </div>
-            </dl>
+            <div className="mt-8 border-t border-white/10 pt-5">
+              <dl className="hidden gap-8 lg:flex">
+                <div>
+                  <dd className="font-display text-[2rem] leading-none text-pure">15</dd>
+                  <dt className="eyebrow mt-2 text-[0.5625rem] text-silver">Sectors of interest</dt>
+                </div>
+                <div>
+                  <dd className="font-display text-[2rem] leading-none text-pure">04</dd>
+                  <dt className="eyebrow mt-2 text-[0.5625rem] text-silver">Strategic categories</dt>
+                </div>
+              </dl>
+              <Link href="/investor-challenge" onClick={onNavigate} className="group mt-4 inline-flex min-h-11 items-center gap-2 font-ui text-[0.8125rem] font-semibold text-pure">
+                <span className="border-b border-silver/40 pb-0.5 transition-colors group-hover:border-pure">Take the Investor Challenge</span>
+                <ArrowRight aria-hidden strokeWidth={1.5} className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
 
           {/* Directory + footer bar */}

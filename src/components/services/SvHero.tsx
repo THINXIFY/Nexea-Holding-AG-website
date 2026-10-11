@@ -6,6 +6,7 @@ import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import { fadeUp, revealLines } from "@/lib/animations";
 import { useMotion } from "@/hooks/useMotion";
+import { Button } from "@/components/ui/Button";
 import { MaskedLines } from "@/components/ui/MaskedLines";
 
 export function SvHero() {
@@ -78,6 +79,15 @@ export function SvHero() {
           Connecting investment thinking, commercial understanding, and strategic insight to
           explore opportunities across international markets.
         </p>
+
+        <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
+          <div data-anim data-sh-copy className="flex">
+            <Button href="/service-navigator" variant="solid-light" arrowIcon="up-right" sweep className="w-full sm:w-auto">Find My Service</Button>
+          </div>
+          <div data-anim data-sh-copy className="flex">
+            <Button href="#services-list" variant="outline-light" sweep className="w-full sm:w-auto">Explore Our Services</Button>
+          </div>
+        </div>
 
         <p data-anim data-sh-copy className="eyebrow mt-7 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[0.6875rem] text-silver sm:mt-9 sm:text-xs">
           <span aria-hidden className="h-px w-10 shrink-0 bg-silver/50" />
