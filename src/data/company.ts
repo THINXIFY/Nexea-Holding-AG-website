@@ -15,8 +15,6 @@ export const COMPANY = {
   registeredOffice: "Hergiswil, Nidwalden, Switzerland",
   registrationDate: "27 August 2004",
   status: "Active",
-  /** Registered share capital per the supplied corporate records. NOT investment capacity or available funds. */
-  shareCapital: { amount: "CHF 2,000,000", currency: "Swiss Francs (CHF)" },
   auditor: { name: "Arimec Audit AG", location: "Suhr, Switzerland" },
   url: "https://nexea-holding.com",
 } as const;

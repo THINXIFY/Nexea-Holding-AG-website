@@ -8,7 +8,7 @@ import { gsap } from "@/lib/gsap";
 import { fadeUp } from "@/lib/animations";
 import { useMotion } from "@/hooks/useMotion";
 import { ADDRESS_LINES, COMPANY, MAPS_LINK_URL } from "@/data/company";
-import { ACTIVITIES, COMPANY_DESCRIPTION, DISCLOSURES, PRIVACY_NOTICE, LEGAL_RESOURCES, LEGAL_SECTIONS, LEGAL_STATUS_STATEMENT, REGISTERED_PURPOSE, SIGNATORIES } from "@/data/impressum";
+import { ACTIVITIES, COMPANY_DESCRIPTION, DISCLOSURES, PRIVACY_NOTICE, LEGAL_RESOURCES, LEGAL_SECTIONS, LEGAL_STATUS_STATEMENT, REGISTERED_PURPOSE } from "@/data/impressum";
 import { CopyAddressButton } from "@/components/contact/CopyAddressButton";
 import { CopyValueButton } from "@/components/impressum/CopyValueButton";
 import { CompanyRegisterButton } from "@/components/documents/CompanyRegisterButton";
@@ -118,15 +118,9 @@ export function LegalSections() {
       </section>
 
       {/* 02 */}
-      <section id="capital" data-lg-section aria-labelledby="capital-heading" className="scroll-mt-32 lg:scroll-mt-28">
-        <Head id="capital" title="Registered Capital & Corporate Status." intro="Nexea Holding AG is an active Swiss corporation with registered share capital of CHF 2,000,000." />
-        <div className="mt-6 grid border border-line lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-          <div className="border-b border-line bg-frost p-6 lg:border-b-0 lg:border-r">
-            <p className="eyebrow text-[0.625rem] text-steel">Registered Share Capital</p>
-            <p className="mt-3 font-display text-[2.25rem] leading-none text-ink sm:text-[2.75rem]">{COMPANY.shareCapital.amount}</p>
-            <span aria-hidden className="mt-4 block h-px w-12 bg-steel" />
-            <p className="mt-3 text-[0.875rem] leading-[1.5]">{COMPANY.shareCapital.currency}. Share capital as registered in the commercial register.</p>
-          </div>
+      <section id="corporate-status" data-lg-section aria-labelledby="corporate-status-heading" className="scroll-mt-32 lg:scroll-mt-28">
+        <Head id="corporate-status" title="Corporate Status & Registration." intro="Nexea Holding AG is an active Swiss corporation registered in the Commercial Register of the Canton of Nidwalden." />
+        <div className="mt-6 border border-line">
           <div>
             <h3 className="border-b border-line px-5 pb-3 pt-5 font-ui text-[0.9375rem] font-semibold text-ink">Legal Registration & Corporate Status</h3>
             <dl className="grid sm:grid-cols-2">
@@ -134,7 +128,6 @@ export function LegalSections() {
                 ["Company Status", COMPANY.status],
                 ["Legal Form", COMPANY.legalForm],
                 ["Registered Since", COMPANY.registrationDate],
-                ["Registered Share Capital", COMPANY.shareCapital.amount],
                 ["Commercial Register", COMPANY.commercialRegisterOffice],
                 ["Registration Number", COMPANY.commercialRegisterNumber],
                 ["Company UID", COMPANY.uid],
@@ -175,32 +168,9 @@ export function LegalSections() {
             </div>
           </div>
         </div>
-        <p className="mt-4 max-w-[44rem] text-[0.875rem] leading-[1.5] text-muted">
-          Registered share capital is a legal figure. It does not represent cash on hand, investment
-          funding, assets under management, or investment capacity.
-        </p>
       </section>
 
       {/* 03 */}
-      <section id="signatories" data-lg-section aria-labelledby="signatories-heading" className="scroll-mt-32 lg:scroll-mt-28">
-        <Head id="signatories" title="Management & Signatories." intro="The following individuals are identified in the available commercial-register information as corporate officers or authorized representatives." />
-        <ul className="mt-6 grid border-t border-line md:grid-cols-3 md:gap-x-0">
-          {SIGNATORIES.map((s, i) => (
-            <li key={s.name} className={`border-b border-line py-5 md:border-b-0 md:py-6 ${i > 0 ? "md:border-l md:pl-6" : "md:pr-6"} ${i === 1 ? "md:pr-6" : ""}`}>
-              <h3 className="font-display text-[1.375rem] leading-[1.2] text-ink">{s.name}</h3>
-              <p className="mt-2 font-ui text-[0.9375rem] font-semibold leading-[1.4] text-ink">{s.position}</p>
-              <p className="mt-3 border-t border-line pt-3 text-[0.9375rem] leading-[1.45]">{s.authority}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-2 border border-line bg-frost p-5">
-          <p className="eyebrow text-[0.625rem] text-steel">Registered Auditor</p>
-          <p className="mt-1.5 font-ui text-[1.0625rem] font-semibold text-ink">{COMPANY.auditor.name}</p>
-          <p className="text-[0.9375rem]">{COMPANY.auditor.location}</p>
-        </div>
-      </section>
-
-      {/* 04 */}
       <section id="contact-info" data-lg-section aria-labelledby="contact-info-heading" className="scroll-mt-32 lg:scroll-mt-28">
         <Head id="contact-info" title="Contact & Registered Office." />
         <div className="mt-6 grid gap-y-6 border-t border-line pt-6 sm:grid-cols-2 sm:gap-x-8">
@@ -241,7 +211,7 @@ export function LegalSections() {
         </div>
       </section>
 
-      {/* 05 */}
+      {/* 04 */}
       <section id="disclosures" data-lg-section aria-labelledby="disclosures-heading" className="scroll-mt-32 lg:scroll-mt-28">
         <Head id="disclosures" title="Website Information & Legal Notices." />
         <nav aria-label="Notices in this section" className="mt-4 border-y border-line py-1">
@@ -303,7 +273,7 @@ export function LegalSections() {
         </p>
       </section>
 
-      {/* 06 */}
+      {/* 05 */}
       <section id="privacy" data-lg-section aria-labelledby="privacy-heading" className="scroll-mt-32 lg:scroll-mt-28">
         <Head id="privacy" title="Privacy & Legal Resources." intro="For information about personal-data processing, cookies, and the use of this website, please consult the Privacy Policy and the Terms & Conditions." />
         <article id="privacy-data" data-notice="privacy-data" className="mt-6 scroll-mt-32 border-t border-line pt-5 lg:scroll-mt-28">

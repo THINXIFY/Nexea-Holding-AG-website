@@ -17,7 +17,7 @@ const THEMES = [
   },
   {
     title: "Registered Governance",
-    description: "Governance and authorized representation recorded in the commercial register.",
+    description: "Registered governance structure recorded in the commercial register.",
   },
   {
     title: "Corporate Oversight",
@@ -76,8 +76,7 @@ export function Governance() {
           <div data-gov-body className="mt-7 max-w-[34rem] space-y-5 text-[1.0625rem] leading-[1.6]">
             <p data-anim data-gov-copy>
               Nexea Holding AG operates under the Swiss corporate framework, with its registered
-              governance structure and authorized representation recorded in the commercial
-              register.
+              governance structure recorded in the commercial register.
             </p>
             <p data-anim data-gov-copy>
               Our corporate structure provides the foundation for oversight, accountability, and the

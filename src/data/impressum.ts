@@ -1,8 +1,6 @@
 /**
- * Impressum content. Legal and corporate facts only: registered positions and
- * signing authorities below are taken from the supplied commercial-register
- * information and are intentionally separate from the website's Team roster.
- * All wording must be reviewed by counsel before publication.
+ * Impressum content. Legal and corporate facts only, taken from the supplied commercial-register
+ * information. All wording must be reviewed by counsel before publication.
  */
 
 export interface LegalSection {
@@ -16,24 +14,10 @@ export interface LegalSection {
 
 export const LEGAL_SECTIONS: readonly LegalSection[] = [
   { id: "identification", number: "01", nav: "Company Identification", eyebrow: "01 / Company Identification" },
-  { id: "capital", number: "02", nav: "Capital & Legal Status", eyebrow: "02 / Capital & Legal Status" },
-  { id: "signatories", number: "03", nav: "Management & Signatories", eyebrow: "03 / Authorized Representation" },
-  { id: "contact-info", number: "04", nav: "Contact Information", eyebrow: "04 / Contact Information" },
-  { id: "disclosures", number: "05", nav: "Legal Disclosures", eyebrow: "05 / Legal Disclosures" },
-  { id: "privacy", number: "06", nav: "Privacy & Related Pages", eyebrow: "06 / Privacy & Related Information" },
-];
-
-export interface Signatory {
-  name: string;
-  position: string;
-  authority: string;
-}
-
-/** Registered representatives only. Do not add anyone without current registry documentation. */
-export const SIGNATORIES: readonly Signatory[] = [
-  { name: "Hans Rudolf Paul Schöpfer", position: "President of the Board of Directors", authority: "Individual signing authority" },
-  { name: "Dr. Marcel Beat Rüegg", position: "Member of the Board of Directors", authority: "Joint signing authority (two signatures)" },
-  { name: "Alain Girardet", position: "Managing Director", authority: "Individual signing authority" },
+  { id: "corporate-status", number: "02", nav: "Corporate Status", eyebrow: "02 / Corporate Status & Registration" },
+  { id: "contact-info", number: "03", nav: "Contact Information", eyebrow: "03 / Contact Information" },
+  { id: "disclosures", number: "04", nav: "Legal Disclosures", eyebrow: "04 / Legal Disclosures" },
+  { id: "privacy", number: "05", nav: "Privacy & Related Pages", eyebrow: "05 / Privacy & Related Information" },
 ];
 
 export const COMPANY_DESCRIPTION = {
@@ -68,14 +52,12 @@ export const REGISTERED_PURPOSE =
  * Legal disclosures. Wording supplied by Nexea Holding AG and to be reviewed by qualified
  * Swiss legal counsel before publication.
  *
- * tier "primary":   always visible (identity, activities, regulatory status, disclaimers, capital).
+ * tier "primary":   always visible (identity, activities, regulatory status, disclaimers).
  * tier "highlight": always visible, set in a restrained highlighted panel (regulatory status).
  * tier "secondary": lower-risk housekeeping notices that may be collapsed.
  *
- * Editorial note (NOT published): any figure for investment capacity, committed capital,
- * financing arrangements or assets under management must be separately verified and
- * classified before it appears anywhere on the site. The unconfirmed USD 30 million figure
- * is deliberately absent.
+ * Editorial note (NOT published): any figure for investment capacity, committed capital, financing
+ * arrangements or assets under management must be separately verified before it appears on the site.
  */
 export interface Disclosure {
   id: string;
@@ -136,15 +118,6 @@ export const DISCLOSURES: readonly Disclosure[] = [
       "Descriptions of investment interests, opportunities, financial sectors, and proposed services do not, by themselves, constitute an offer to sell securities, a solicitation to acquire financial instruments, a commitment to provide financing, or personalized investment advice.",
       "No representation is made that investment funding is available for any specific transaction.",
       "Any potential investment, commercial arrangement, or advisory engagement would require separate evaluation, appropriate approvals, and definitive contractual documentation.",
-    ],
-  },
-  {
-    id: "capital-disclosures",
-    title: "Capital & Financial Disclosures",
-    tier: "primary",
-    paragraphs: [
-      "The company's documented registered share capital is CHF 2,000,000.",
-      "Registered share capital does not necessarily represent available cash, deployable investment funding, assets under management, or financial guarantees.",
     ],
   },
   {
