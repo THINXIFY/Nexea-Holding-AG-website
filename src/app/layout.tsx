@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   description:
     "Nexea Holding AG is an independent Swiss investment holding company with an international outlook, focused on established industries, real assets, and emerging technologies.",
   applicationName: "Nexea Holding AG",
+  // Google Search Console ownership verification: keep it so the site stays verified.
+  verification: { google: "-WItgd9DTmuzOXdFQQjWB3fkT4HgDjvjboNowT9d-RA" },
   openGraph: {
     title: "Nexea Holding AG",
     description: "Capital with Perspective. Opportunity Without Borders.",
