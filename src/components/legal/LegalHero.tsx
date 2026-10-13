@@ -34,7 +34,7 @@ export function LegalHero({ eyebrow, headingId, title, description, breadcrumb }
     <section ref={root} aria-labelledby={headingId} className="on-dark relative isolate flex min-h-[22rem] flex-col overflow-hidden bg-obsidian text-pure md:min-h-[40svh]">
       <div aria-hidden className="absolute inset-0 -z-20">
         <div data-lh-zoom className="absolute inset-0 will-change-transform">
-          <Image src="/images/nexea-reception.webp" alt="" fill priority sizes="100vw" className="object-cover object-[30%_45%] md:object-[40%_45%]" />
+          <Image src="/images/nexea-reception.webp" alt="" fill priority fetchPriority="high" sizes="100vw" className="object-cover object-[30%_45%] md:object-[40%_45%]" />
         </div>
       </div>
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-obsidian/95 via-obsidian/80 to-obsidian/55 max-md:from-obsidian/92 max-md:via-obsidian/82 max-md:to-obsidian/70" />

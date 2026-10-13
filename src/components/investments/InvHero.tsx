@@ -42,6 +42,7 @@ export function InvHero() {
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[50%_40%] [filter:saturate(0.85)_brightness(1.1)]"
           />

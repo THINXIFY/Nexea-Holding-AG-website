@@ -47,6 +47,7 @@ export function AboutHero() {
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[88%_45%] md:object-[100%_45%]"
           />

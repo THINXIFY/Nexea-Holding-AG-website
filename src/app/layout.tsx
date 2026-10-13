@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollRefresh } from "@/components/layout/ScrollRefresh";
+import { PAGES } from "@/data/seo";
+import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const display = Instrument_Serif({
   subsets: ["latin"],
@@ -26,20 +28,28 @@ const body = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Nexea Holding AG | Swiss Investment Holding",
-    template: "%s | Nexea Holding AG",
-  },
-  description:
-    "Nexea Holding AG is an independent Swiss investment holding company with an international outlook, focused on established industries, real assets, and emerging technologies.",
-  applicationName: "Nexea Holding AG",
+  metadataBase: new URL(SITE_URL),
+  title: { default: PAGES.home.title, template: "%s | Nexea Holding AG" },
+  description: PAGES.home.description,
+  applicationName: SITE_NAME,
   // Google Search Console ownership verification: keep it so the site stays verified.
   verification: { google: "-WItgd9DTmuzOXdFQQjWB3fkT4HgDjvjboNowT9d-RA" },
+  // Indexable by default; googleBot hints allow full-size image previews and complete snippets.
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   openGraph: {
-    title: "Nexea Holding AG",
-    description: "Capital with Perspective. Opportunity Without Borders.",
+    title: PAGES.home.title,
+    description: PAGES.home.description,
+    url: "/",
+    siteName: SITE_NAME,
     type: "website",
-    locale: "en_CH",
+    locale: "en_GB",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGES.home.title,
+    description: PAGES.home.description,
+    images: [{ url: OG_IMAGE.url, alt: OG_IMAGE.alt }],
   },
 };
 

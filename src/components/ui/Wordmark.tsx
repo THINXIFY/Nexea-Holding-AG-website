@@ -65,7 +65,7 @@ export function Wordmark({ variant = "header", className = "", imageClassName = 
         <span
           aria-hidden
           data-logo-sheen
-          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(105deg,transparent_38%,rgba(255,255,255,0.7)_50%,transparent_62%)] [background-position:100%_0] [background-size:260%_100%] [mask-image:url(/images/nexea-holding-logo-on-dark.png)] [mask-repeat:no-repeat] [mask-size:100%_100%] [-webkit-mask-image:url(/images/nexea-holding-logo-on-dark.png)] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
+          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(105deg,transparent_38%,rgba(255,255,255,0.7)_50%,transparent_62%)] [background-position:100%_0] [background-size:260%_100%] [mask-image:url(/images/nexea-logo-mask.png)] [mask-repeat:no-repeat] [mask-size:100%_100%] [-webkit-mask-image:url(/images/nexea-logo-mask.png)] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
         />
       </span>
     </Link>

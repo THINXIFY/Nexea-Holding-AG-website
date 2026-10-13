@@ -43,6 +43,7 @@ export function SvHero() {
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[60%_55%] [filter:saturate(0.8)_brightness(1.15)]"
           />

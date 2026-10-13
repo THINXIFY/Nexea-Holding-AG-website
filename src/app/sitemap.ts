@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
-import { COMPANY } from "@/data/company";
+import { PAGE_LIST } from "@/data/seo";
+import { sitemapUrl } from "@/lib/seo";
 
-const ROUTES = ["/", "/about", "/investments", "/investor-challenge", "/services", "/service-navigator", "/team", "/partnerships", "/contact", "/impressum", "/privacy-policy", "/terms-and-conditions"] as const;
-
+/** One canonical URL per public page (query-string variants are canonicalised to these and deliberately not listed). */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((path) => ({ url: `${COMPANY.url}${path === "/" ? "" : path}` }));
+  return PAGE_LIST.map((p) => ({ url: sitemapUrl(p.path) }));
 }

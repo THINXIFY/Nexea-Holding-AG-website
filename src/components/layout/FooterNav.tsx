@@ -22,7 +22,7 @@ export function FooterGroup({ title, links }: { title: string; links: readonly F
 
   return (
     <div className="border-b border-white/10 md:border-0">
-      <h2 className="hidden font-ui text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-silver md:block">{title}</h2>
+      <p className="hidden font-ui text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-silver md:block">{title}</p>
       <h2 className="md:hidden">
         <button
           type="button"

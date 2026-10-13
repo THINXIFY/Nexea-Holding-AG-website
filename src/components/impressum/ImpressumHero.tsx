@@ -28,7 +28,7 @@ export function ImpressumHero() {
     <section ref={root} aria-labelledby="impressum-heading" className="on-dark relative isolate flex min-h-[26rem] flex-col overflow-hidden bg-obsidian text-pure md:min-h-[48svh]">
       <div data-ih-parallax aria-hidden className="absolute inset-x-0 -top-[5%] -z-20 h-[110%] will-change-transform">
         <div data-ih-zoom className="absolute inset-0 will-change-transform">
-          <Image src="/images/nexea-reception.webp" alt="" fill priority sizes="100vw" className="object-cover object-[88%_45%] md:object-[100%_45%]" />
+          <Image src="/images/nexea-reception.webp" alt="" fill priority fetchPriority="high" sizes="100vw" className="object-cover object-[88%_45%] md:object-[100%_45%]" />
         </div>
       </div>
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-obsidian/95 via-obsidian/65 via-45% to-transparent to-65% max-md:from-obsidian/90 max-md:via-obsidian/75 max-md:to-obsidian/60" />

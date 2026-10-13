@@ -61,6 +61,7 @@ cinematic photography and subtle, purposeful motion.
 | `/privacy-policy` | Privacy Policy |
 | `/terms-and-conditions` | Website terms |
 | `/sitemap.xml` | Generated sitemap |
+| `/robots.txt` | Generated robots rules |
 | `/api/contact` | Contact form endpoint |
 | `/api/request-documents/{start,resend,verify}` | Private document request endpoints |
 
@@ -154,13 +155,25 @@ code and, after verifying it, receives the PDFs by email.
 
 ## SEO and performance
 
-- Per-page metadata (title, description, Open Graph, Twitter), generated `sitemap.xml`, favicon and Apple touch icon.
-- `next/image` with AVIF/WebP and correct `sizes`; priority only on above-the-fold imagery; lazy loading elsewhere.
+SEO copy has a single source, [`src/data/seo.ts`](src/data/seo.ts): every public page's title, description, path, breadcrumb
+label and schema type. It feeds the Metadata API, the sitemap and the JSON-LD, so they cannot drift apart.
+[`src/lib/seo.ts`](src/lib/seo.ts) builds the metadata and structured data from it.
+
+- **Metadata:** `metadataBase` is `https://nexea-holding.com`. Each page sets its own title, description, canonical URL,
+  Open Graph and Twitter card through `pageMetadata()`. Query-string variants (`?sector=`, `?service=`, `?type=`, `?nav=`)
+  canonicalise to the clean page URL.
+- **Social image:** `public/og/nexea-holding-og.jpg` (1200 x 630, under 300 KB) is used by every page.
+- **Structured data (JSON-LD):** `Organization` + `WebSite` + `WebPage` on the home page; `WebPage` (`AboutPage` /
+  `ContactPage` where fitting) + `BreadcrumbList` on the others. Only facts published on the site are used (name, address,
+  email, UID, logo); no ratings, awards, licences or other offices.
+- **Crawling:** `/robots.txt` allows the site, blocks `/api/` and `/documents/`, and points to `/sitemap.xml` (one canonical
+  URL per page). robots.txt is a crawling hint, not security; private documents are never web-served.
+- **Icons:** `src/app/favicon.ico`, `icon.png`, `apple-icon.png` and a web manifest (`/manifest.webmanifest`).
+- **Search Console:** the `google-site-verification` tag is set in `src/app/layout.tsx`; keep it so the site stays verified.
+- `next/image` with AVIF/WebP and correct `sizes`; the first hero slide is preloaded, other slides are lazy and low priority.
 - Self-hosted fonts via `next/font`; GSAP registered once; ScrollTrigger refreshed on load, fonts and route changes.
 - Static prerendering for all pages; only the API routes are dynamic.
-
-> The canonical URL is `https://nexea-holding.com`. Set the production host before launch and review each page's
-> `alternates.canonical`.
+- `www` and plain-HTTP requests redirect to `https://nexea-holding.com` in the nginx config (`deploy/nginx`).
 
 ## Project structure
 

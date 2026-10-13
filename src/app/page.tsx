@@ -1,3 +1,6 @@
+import { JsonLd } from "@/components/seo/JsonLd";
+import { PAGES } from "@/data/seo";
+import { pageMetadata, pageSchema } from "@/lib/seo";
 import { HeroSlider } from "@/components/sections/HeroSlider";
 import { About } from "@/components/sections/About";
 import { InvestmentUniverse } from "@/components/sections/InvestmentUniverse";
@@ -9,9 +12,12 @@ import { GlobalPerspective } from "@/components/sections/GlobalPerspective";
 import { Partnerships } from "@/components/sections/Partnerships";
 import { ContactCta } from "@/components/sections/ContactCta";
 
+export const metadata = pageMetadata(PAGES.home);
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={pageSchema(PAGES.home)} />
       <main id="main">
         <HeroSlider />
         <About />

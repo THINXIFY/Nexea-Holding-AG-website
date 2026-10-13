@@ -16,6 +16,9 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 const EASE = "ease-out-expo";
 
+/** First-load stagger. Compressed against the slide-to-slide stagger so the hero is fully revealed in ~1.2s, not ~2.5s. */
+const introDelay = (slideDelayMs: number) => Math.round((slideDelayMs - 300) * 0.4);
+
 /** Content of one slide. Only the active slide is exposed to assistive technology and the tab order. */
 function SlideCopy({ slide, index, state, intro }: { slide: HeroSlide; index: number; state: TextState; intro: boolean }) {
   const active = state === "active";
@@ -24,7 +27,7 @@ function SlideCopy({ slide, index, state, intro }: { slide: HeroSlide; index: nu
   // Staged entrance: eyebrow, headline lines, description, buttons. Transitions only run while active.
   const rise = (delayMs: number, introClass = "hero-intro-rise") => ({
     className: `${shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"} ${active ? `transition-[opacity,transform] duration-[800ms] ${EASE} motion-reduce:transition-none` : ""} ${first ? introClass : ""}`,
-    style: { ...(active ? { transitionDelay: `${delayMs}ms` } : null), ...(first ? { "--hero-delay": `${delayMs + 150}ms` } : null) } as CSSProperties,
+    style: { ...(active ? { transitionDelay: `${delayMs}ms` } : null), ...(first ? { "--hero-delay": `${introDelay(delayMs)}ms` } : null) } as CSSProperties,
   });
 
   return (
@@ -48,7 +51,7 @@ function SlideCopy({ slide, index, state, intro }: { slide: HeroSlide; index: nu
             <span key={line} className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
               <span
                 className={`block ${shown ? "translate-y-0" : "translate-y-[112%]"} ${active ? `transition-transform duration-[1000ms] ${EASE} motion-reduce:transition-none` : ""} ${first ? "hero-intro-line" : ""}`}
-                style={{ ...(active ? { transitionDelay: `${d}ms` } : null), ...(first ? { "--hero-delay": `${d + 150}ms` } : null) } as CSSProperties}
+                style={{ ...(active ? { transitionDelay: `${d}ms` } : null), ...(first ? { "--hero-delay": `${introDelay(d)}ms` } : null) } as CSSProperties}
               >
                 {line}
               </span>
@@ -193,7 +196,7 @@ export function HeroSlider() {
       onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node | null) && setFocusIn(false)}
       className="on-dark relative isolate flex min-h-[max(36rem,100svh)] flex-col overflow-hidden bg-obsidian text-pure [touch-action:pan-y]"
     >
-      <h1 className="sr-only">Nexea Holding AG, Swiss investment holding company</h1>
+      <h1 className="sr-only">Investing Beyond Boundaries.</h1>
 
       {/* Photographs: the new image fades in over the previous one (which stays painted underneath). */}
       <div aria-hidden className="absolute inset-0 -z-20 bg-obsidian">
@@ -217,6 +220,7 @@ export function HeroSlider() {
                   alt=""
                   fill
                   priority={i === 0}
+                  fetchPriority={i === 0 ? "high" : "low"}
                   sizes="100vw"
                   quality={80}
                   className="object-cover [object-position:var(--pm)] md:[object-position:var(--pt)] lg:[object-position:var(--pd)]"

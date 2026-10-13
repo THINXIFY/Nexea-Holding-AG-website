@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { PAGES } from "@/data/seo";
+import { pageMetadata, pageSchema } from "@/lib/seo";
 import { ContactProvider } from "@/components/contact/ContactProvider";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { EnquirySelector } from "@/components/contact/EnquirySelector";
@@ -7,22 +9,12 @@ import { CorporateInfo } from "@/components/contact/CorporateInfo";
 import { Location } from "@/components/contact/Location";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
-export const metadata: Metadata = {
-  title: { absolute: "Contact Nexea Holding AG | Switzerland" },
-  description:
-    "Contact Nexea Holding AG in Hergiswil, Switzerland, regarding corporate enquiries, potential investment opportunities, and strategic partnerships.",
-  // Set `alternates.canonical` to https://nexea-holding.com/contact once that is confirmed as the production host.
-  openGraph: {
-    title: "Contact Nexea Holding AG | Switzerland",
-    description: "Let’s Start a Conversation.",
-    type: "website",
-    locale: "en_CH",
-  },
-};
+export const metadata = pageMetadata(PAGES.contact);
 
 export default function ContactPage() {
   return (
     <ContactProvider>
+      <JsonLd data={pageSchema(PAGES.contact)} />
       <main id="main">
         <ContactHero />
         <EnquirySelector />

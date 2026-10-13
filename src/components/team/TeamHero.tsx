@@ -48,6 +48,7 @@ export function TeamHero() {
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[62%_50%] [filter:saturate(0.9)_brightness(1.05)]"
           />

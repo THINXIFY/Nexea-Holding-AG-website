@@ -36,6 +36,7 @@ export function PartnersHero() {
             alt=""
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[72%_50%] md:object-[60%_50%]"
           />

@@ -67,8 +67,9 @@ export function InvApproach() {
               A considered investment process supports informed decisions through commercial
               understanding, due diligence, and strategic assessment.
             </p>
-            <div data-anim data-ap-copy className="mt-8">
+            <div data-anim data-ap-copy className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Button href="/contact?type=investment" variant="solid-dark" sweep>Discuss an Opportunity</Button>
+              <Button href="/services" variant="outline-dark" sweep>Investment Consulting Services</Button>
             </div>
           </div>
         </div>

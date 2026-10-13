@@ -154,14 +154,17 @@
   transform-origin: left center;
 }
 @keyframes hero-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes hero-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-@keyframes hero-line { from { transform: translateY(112%); } to { transform: none; } }
+@keyframes hero-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+/* The headline is revealed with a clip wipe + short rise instead of sliding out from behind an overflow mask. The text
+   is laid out and painted at full size from the first frame, which is what lets the browser count it as the page's
+   largest contentful paint (a mask-hidden line is recorded at ~0 area and never updated). */
+@keyframes hero-line { from { clip-path: inset(0 -0.1em 100% -0.1em); transform: translateY(0.3em); } to { clip-path: inset(-0.08em -0.1em -0.25em -0.1em); transform: none; } }
 @keyframes hero-zoom { from { scale: 1.05; } to { scale: 1; } }
 @media (prefers-reduced-motion: no-preference) {
   .hero-progress-fill { animation: hero-progress var(--hero-duration, 7000ms) linear forwards; }
   /* First paint only: pure CSS so nothing depends on JavaScript or hydration. */
-  .hero-intro-rise { animation: hero-rise 0.9s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .hero-intro-line { animation: hero-line 1.1s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-intro-rise { animation: hero-rise 0.7s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-intro-line { animation: hero-line 0.9s var(--hero-delay, 0s) cubic-bezier(0.16, 1, 0.3, 1) both; }
   .hero-intro-zoom { animation: hero-zoom 2.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 }
 

@@ -72,12 +72,12 @@ export function InvestmentsMega({ id, open, onNavigate }: PanelProps) {
                 return (
                   <section key={g.id} aria-labelledby={`${id}-${g.id}`}>
                     <div className="flex min-h-[2.75rem] items-end justify-between gap-3 border-b border-white/15 pb-3">
-                      <h3 id={`${id}-${g.id}`}>
+                      <p id={`${id}-${g.id}`}>
                         <Link href={categoryHref(g.id)} onClick={onNavigate} className="eyebrow inline-flex min-h-8 items-center gap-2.5 text-[0.6875rem] text-silver transition-colors hover:text-pure">
                           <span aria-hidden className="text-steel">{pad(gi + 1)}</span>
                           {g.filterLabel}
                         </Link>
-                      </h3>
+                      </p>
                       <span aria-hidden className="pb-1 font-ui text-[0.6875rem] font-semibold tabular-nums text-silver/60">{pad(sectors.length)}</span>
                     </div>
                     <ul className="mt-2">
