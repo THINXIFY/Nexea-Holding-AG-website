@@ -32,13 +32,13 @@ export function PartnersHero() {
       <div aria-hidden className="absolute inset-0 -z-20">
         <div data-ph-zoom className="absolute inset-0 will-change-transform">
           <Image
-            src="/images/partnerships-hero.webp"
+            src="/images/partners-hero-boardroom.webp"
             alt=""
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            className="object-cover object-[72%_50%] md:object-[60%_50%]"
+            className="object-cover object-[62%_50%] md:object-[60%_50%]"
           />
         </div>
       </div>

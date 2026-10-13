@@ -12,7 +12,7 @@ export const PILLARS: readonly Pillar[] = [
     number: "01",
     title: "Real Assets & Infrastructure",
     description:
-      "Exploring property, precious metals, renewable energy, logistics, and essential infrastructure assets.",
+      "Exploring property, renewable energy, logistics, and essential infrastructure assets.",
     image: { src: "/images/ab-real-assets.jpg", alt: "Aerial view of a dense financial district of skyscrapers", position: "50% 40%" },
   },
   {

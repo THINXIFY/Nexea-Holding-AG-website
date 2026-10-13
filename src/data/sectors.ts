@@ -30,19 +30,6 @@ export const SECTORS: readonly Sector[] = [
     size: "feature",
   },
   {
-    id: "gold",
-    title: "Gold & Precious Metals",
-    summary:
-      "Precious metal assets, commodity-linked opportunities, and businesses connected to established stores of value.",
-    image: {
-      src: "/images/sector-gold.jpg",
-      alt: "A pile of gold bars and coins on a black background",
-      position: "50% 45%",
-    },
-    layout: "lg:col-span-5",
-    size: "wide",
-  },
-  {
     id: "ai",
     title: "Artificial Intelligence",
     summary:
@@ -52,7 +39,7 @@ export const SECTORS: readonly Sector[] = [
       alt: "Rows of illuminated server racks in a data centre",
       position: "50% 50%",
     },
-    layout: "lg:col-span-5",
+    layout: "md:col-span-2 lg:col-span-5 lg:row-span-2",
     size: "wide",
   },
   {

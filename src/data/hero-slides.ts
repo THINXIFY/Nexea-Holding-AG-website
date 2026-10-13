@@ -17,9 +17,11 @@ export interface HeroSlide {
 
 /**
  * Homepage hero slides. Images (public/images/slider), assigned by what they show:
- *  - slide-1.png: Swiss lakeside terrace with the Nexea logo and guests   -> Corporate Identity
- *  - slide-2.png: executive office over an international financial district -> Strategic Investments
- *  - slide-3.png: executive boardroom in discussion                         -> Global Perspective
+ *  - slide-1.jpg: dark glass towers with a glowing bar chart and rising arrow -> Corporate Identity
+ *  - slide-2.jpg: bright blue towers with a rising chart                      -> Strategic Investments
+ *  - slide-3.jpg: sunset skyline with a world-network overlay                 -> Global Perspective
+ * All three are 2000 x 1121 JPEGs; next/image serves optimised AVIF/WebP. Positions keep each photo's subject (chart and
+ * towers) in frame while the copy sits over the left.
  * Route checks: /investments#approach (InvApproach), /partnerships and /contact all exist.
  */
 export const HERO_SLIDES: readonly HeroSlide[] = [
@@ -32,7 +34,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
       "Established in Switzerland in 2004, Nexea Holding AG pursues long-term value through strategic corporate participations and a global investment perspective.",
     primary: { label: "Explore Investments", href: "/investments" },
     secondary: { label: "Discover Nexea", href: "/about" },
-    image: { src: "/images/slider/slide-1.png", position: { mobile: "86% 50%", tablet: "80% 50%", desktop: "70% 50%" } },
+    image: { src: "/images/slider/slide-1.jpg", position: { mobile: "64% 50%", tablet: "62% 50%", desktop: "55% 50%" } },
   },
   {
     id: "investments",
@@ -43,7 +45,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
       "From real assets and established industries to technology and innovation, we explore investment opportunities with discipline and a long-term perspective.",
     primary: { label: "Our Investment Universe", href: "/investments" },
     secondary: { label: "Our Approach", href: "/investments#approach" },
-    image: { src: "/images/slider/slide-2.png", position: { mobile: "86% 50%", tablet: "76% 50%", desktop: "66% 50%" } },
+    image: { src: "/images/slider/slide-2.jpg", position: { mobile: "62% 50%", tablet: "60% 50%", desktop: "52% 50%" } },
   },
   {
     id: "partnerships",
@@ -54,7 +56,7 @@ export const HERO_SLIDES: readonly HeroSlide[] = [
       "We believe enduring value begins with thoughtful decisions, meaningful relationships, and opportunities that reach across markets and industries.",
     primary: { label: "Explore Partners", href: "/partnerships" },
     secondary: { label: "Get in Touch", href: "/contact" },
-    image: { src: "/images/slider/slide-3.png", position: { mobile: "88% 50%", tablet: "80% 50%", desktop: "72% 50%" } },
+    image: { src: "/images/slider/slide-3.jpg", position: { mobile: "44% 50%", tablet: "38% 50%", desktop: "50% 50%" } },
   },
 ];
 

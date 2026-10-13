@@ -23,7 +23,7 @@ export async function sendMail(input: { to: string; subject: string; html: strin
   const from = process.env.DOCUMENTS_FROM_EMAIL || process.env.CONTACT_FROM_EMAIL;
   if (!key || !from) throw new Error("mail_not_configured");
 
-  const logo = await readFile(/*turbopackIgnore: true*/ path.join(process.cwd(), "public", "images", "nexea-email-logo.png"));
+  const logo = await readFile(/*turbopackIgnore: true*/ path.join(process.cwd(), "public", "images", "logo", "nexea-logo-email.png"));
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 45_000);
   try {

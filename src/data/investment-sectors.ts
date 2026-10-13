@@ -24,7 +24,7 @@ export interface InvestmentSector {
 }
 
 /**
- * The 15 sectors of interest. These are proposed investment interests, NOT
+ * The 14 sectors of interest. These are proposed investment interests, NOT
  * current portfolio companies or holdings.
  *
  * No sector has a published inner page yet, so entries carry no `href`. When
@@ -38,13 +38,6 @@ export const INVESTMENT_SECTORS: readonly InvestmentSector[] = [
     description: "Residential, commercial, and development-related investment opportunities.",
     group: "real-assets",
     image: { src: "/images/universe-real-estate.jpg", alt: "Upward view of a glass residential and office tower", position: "40% 40%" },
-  },
-  {
-    slug: "gold-precious-metals",
-    title: "Gold & Precious Metals",
-    description: "Precious metals, commodity-linked assets, and related businesses.",
-    group: "real-assets",
-    image: { src: "/images/universe-gold.jpg", alt: "Gold bars and coins", position: "50% 50%" },
   },
   {
     slug: "energy-renewable-power",

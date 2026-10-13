@@ -35,13 +35,13 @@ export function ContactHero() {
       <div data-ch-parallax aria-hidden className="absolute inset-x-0 -top-[6%] -z-20 h-[112%] will-change-transform">
         <div data-ch-zoom className="absolute inset-0 will-change-transform">
           <Image
-            src="/images/contact-hero.webp"
+            src="/images/contact-us.png"
             alt=""
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            className="object-cover object-[88%_45%] md:object-[100%_45%]"
+            className="object-cover object-[78%_50%] md:object-[100%_50%]"
           />
         </div>
       </div>

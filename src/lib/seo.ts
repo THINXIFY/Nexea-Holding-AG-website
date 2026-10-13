@@ -4,7 +4,8 @@ import { PAGES, SITE_SLOGAN, type PageSeo } from "@/data/seo";
 
 export const SITE_URL = COMPANY.url;
 export const SITE_NAME = COMPANY.name;
-export const LOGO_URL = `${SITE_URL}/images/nexea-holding-logo.png`;
+/** The supplied lighter logo (transparent PNG, 1586 x 450). The file name contains spaces, so the URL is encoded. */
+export const LOGO_URL = `${SITE_URL}/images/logo/NEXEA%20Holding%20AG%20Lighter%20logo.png`;
 
 /** Branded 1200 x 630 social-sharing image (public/og). Relative: resolved against metadataBase. */
 export const OG_IMAGE = {
@@ -53,7 +54,7 @@ const organization = {
   name: SITE_NAME,
   legalName: SITE_NAME,
   url: SITE_URL,
-  logo: { "@type": "ImageObject", "@id": `${SITE_URL}/#logo`, url: LOGO_URL, contentUrl: LOGO_URL, width: 2022, height: 537, caption: SITE_NAME },
+  logo: { "@type": "ImageObject", "@id": `${SITE_URL}/#logo`, url: LOGO_URL, contentUrl: LOGO_URL, width: 1586, height: 450, caption: SITE_NAME },
   image: `${SITE_URL}${OG_IMAGE.url}`,
   slogan: SITE_SLOGAN,
   description: PAGES.home.description,

@@ -168,7 +168,8 @@ label and schema type. It feeds the Metadata API, the sitemap and the JSON-LD, s
   email, UID, logo); no ratings, awards, licences or other offices.
 - **Crawling:** `/robots.txt` allows the site, blocks `/api/` and `/documents/`, and points to `/sitemap.xml` (one canonical
   URL per page). robots.txt is a crawling hint, not security; private documents are never web-served.
-- **Icons:** `src/app/favicon.ico`, `icon.png`, `apple-icon.png` and a web manifest (`/manifest.webmanifest`).
+- **Brand assets:** the supplied logo and favicon live in `public/images/logo/`. The header, footer and dialogs import the logo via `src/components/ui/logo-image.ts`. `nexea-logo-mask.png` (header/footer light sweep) and `nexea-logo-email.png` (verification email) are smaller derivatives of it.
+- **Icons:** `src/app/favicon.ico`, `icon.png`, `apple-icon.png` and `public/icons/*` (manifest) are generated from `NEXEA Holding AG favicon.png`; the web manifest is `/manifest.webmanifest`.
 - **Search Console:** the `google-site-verification` tag is set in `src/app/layout.tsx`; keep it so the site stays verified.
 - `next/image` with AVIF/WebP and correct `sizes`; the first hero slide is preloaded, other slides are lazy and low priority.
 - Self-hosted fonts via `next/font`; GSAP registered once; ScrollTrigger refreshed on load, fonts and route changes.
@@ -383,6 +384,7 @@ rate limiting; no HSTS header is set until all subdomains are confirmed to suppo
 - **Partner logos:** replace the placeholder PNGs in `public/images/partners/` and update `src/data/partners.ts`
   (mark each entry `approvedForPublication: true`, `isPlaceholder: false`); the preview notice then disappears.
 - **Hero slides:** edit `src/data/hero-slides.ts` and the images in `public/images/slider/`.
+- **Page hero images** (About, Our Partners, Contact) and where they came from: see [`docs/image-credits.md`](docs/image-credits.md); update it when an image is replaced.
 - **Navigation:** `src/data/navigation.ts`. Items without a published destination are omitted, never shown as dead links.
 - **Design tokens** (colours, type scale) live in `src/app/globals.css` (`@theme`).
 - No portfolio, performance or financing claims should be added without verification; all investment and service

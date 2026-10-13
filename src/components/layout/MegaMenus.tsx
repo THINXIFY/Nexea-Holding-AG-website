@@ -29,7 +29,7 @@ function Arcs({ className }: { className: string }) {
   );
 }
 
-/** Investments: dark, typography-led directory of the 15 sectors in four categories. */
+/** Investments: dark, typography-led directory of the investment sectors in four categories. */
 export function InvestmentsMega({ id, open, onNavigate }: PanelProps) {
   return (
     <div id={id} inert={!open} className={shell(open)}>
@@ -49,7 +49,7 @@ export function InvestmentsMega({ id, open, onNavigate }: PanelProps) {
             <div className="mt-8 border-t border-white/10 pt-5">
               <dl className="hidden gap-8 lg:flex">
                 <div>
-                  <dd className="font-display text-[2rem] leading-none text-pure">15</dd>
+                  <dd className="font-display text-[2rem] leading-none text-pure">{INVESTMENT_SECTORS.length}</dd>
                   <dt className="eyebrow mt-2 text-[0.5625rem] text-silver">Sectors of interest</dt>
                 </div>
                 <div>
@@ -100,7 +100,7 @@ export function InvestmentsMega({ id, open, onNavigate }: PanelProps) {
               })}
             </div>
             <div className="flex items-center justify-between gap-6 border-t border-white/10 bg-white/[0.02] px-7 py-3 xl:px-8">
-              <p className="hidden text-[0.75rem] leading-[1.4] text-silver/80 md:block">Fifteen sectors across four strategic categories.</p>
+              <p className="hidden text-[0.75rem] leading-[1.4] text-silver/80 md:block">{INVESTMENT_SECTORS.length} sectors across four strategic categories.</p>
               <Link
                 href="/investments"
                 onClick={onNavigate}

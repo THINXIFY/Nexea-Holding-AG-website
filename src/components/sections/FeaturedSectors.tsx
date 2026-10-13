@@ -8,6 +8,7 @@ import { gsap } from "@/lib/gsap";
 import { fadeUp, parallax, revealImage, revealLines } from "@/lib/animations";
 import { useMotion } from "@/hooks/useMotion";
 import { SECTORS, type Sector } from "@/data/sectors";
+import { INVESTMENT_SECTORS } from "@/data/investment-sectors";
 import { Button } from "@/components/ui/Button";
 import { MaskedLines } from "@/components/ui/MaskedLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -207,7 +208,7 @@ export function FeaturedSectors() {
           className="mt-10 flex flex-col items-start gap-6 sm:mt-12 sm:flex-row sm:items-center sm:gap-8"
         >
           <span aria-hidden className="hidden h-px flex-1 bg-line sm:block" />
-          <Button href="/investments#sectors" variant="solid-dark">Discover All 15 Sectors</Button>
+          <Button href="/investments#sectors" variant="solid-dark">Discover All {INVESTMENT_SECTORS.length} Sectors</Button>
         </div>
       </div>
     </section>

@@ -38,7 +38,7 @@ export const PAGES = {
     name: "Investments",
     title: "Investment Sectors & Opportunities | Nexea Holding AG",
     description:
-      "Explore Nexea Holding AG's investment universe, including real estate, gold, artificial intelligence, technology, energy, healthcare, and global industries.",
+      "Explore Nexea Holding AG's investment universe, including real estate, artificial intelligence, technology, energy, healthcare, and global industries.",
   },
   services: {
     path: "/services",

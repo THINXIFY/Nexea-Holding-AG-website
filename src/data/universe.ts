@@ -21,16 +21,6 @@ export const UNIVERSE: readonly UniverseCategory[] = [
     },
   },
   {
-    id: "gold",
-    title: "Gold & Precious Metals",
-    description: "Gold, precious metals and commodity-related investments.",
-    image: {
-      src: "/images/universe-gold.jpg",
-      alt: "Gold bars and coins",
-      position: "50% 50%",
-    },
-  },
-  {
     id: "ai-technology",
     title: "Artificial Intelligence & Technology",
     description: "AI, software, cloud infrastructure and digital innovation.",

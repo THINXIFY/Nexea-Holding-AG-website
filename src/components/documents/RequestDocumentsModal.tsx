@@ -8,6 +8,7 @@ import { ArrowRight, Check, FileText, Loader2, Lock, Mail, ShieldCheck, X } from
 import { gsap } from "@/lib/gsap";
 import { COMPANY } from "@/data/company";
 import { OtpCodeInput } from "@/components/documents/OtpCodeInput";
+import { logoImage } from "@/components/ui/logo-image";
 
 type View = "email" | "sending" | "otp" | "verifying" | "success" | "failure" | "retrying" | "unavailable";
 
@@ -250,7 +251,7 @@ export function RequestDocumentsModal({ onClose }: { onClose: () => void }) {
         {/* Brand panel */}
         <aside className="relative hidden flex-col justify-between border-r border-white/10 bg-white/[0.03] p-9 md:flex">
           <div>
-            <Image src="/images/nexea-holding-logo-on-dark.png" alt="Nexea Holding AG" width={2022} height={537} sizes="180px" className="h-12 w-auto" />
+            <Image src={logoImage} alt="Nexea Holding AG" sizes="180px" className="h-12 w-auto" />
             <p className="eyebrow mt-10 flex items-center gap-3 text-[0.6875rem] text-silver">
               <span aria-hidden className="h-px w-8 bg-silver/60" />
               Private Documents
@@ -288,7 +289,7 @@ export function RequestDocumentsModal({ onClose }: { onClose: () => void }) {
         <div className="min-w-0 p-6 pt-7 sm:p-9 md:pt-10">
           {/* Compact brand + progress for small screens */}
           <div className="mb-6 flex items-center justify-between gap-4 pr-10 md:hidden">
-            <Image src="/images/nexea-holding-logo-on-dark.png" alt="Nexea Holding AG" width={2022} height={537} sizes="120px" className="h-8 w-auto" />
+            <Image src={logoImage} alt="Nexea Holding AG" sizes="120px" className="h-8 w-auto" />
             <div className="flex items-center gap-1.5" role="img" aria-label={`Step ${step + 1} of 3`}>
               {STEPS.map((s, i) => (
                 <span key={s.title} aria-hidden className={`h-1 rounded-full transition-all duration-500 ${i === step ? "w-7 bg-platinum" : i < step ? "w-3 bg-platinum/70" : "w-3 bg-white/20"}`} />

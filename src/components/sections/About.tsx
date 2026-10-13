@@ -81,8 +81,8 @@ export function About() {
             className="absolute inset-x-0 -top-[7%] h-[114%] will-change-transform"
           >
             <Image
-              src="/images/home-about-reception.webp"
-              alt="Nexea Holding AG reception with the company logo, a visitor being welcomed by the team, and lake and mountain views"
+              src="/images/home-about-img.png"
+              alt="Upward view of modern glass office towers against a pale, overcast sky"
               fill
               sizes="(min-width: 1024px) 43vw, 100vw"
               className="object-cover object-[50%_55%] sm:object-[50%_50%] lg:object-[85%_45%]"

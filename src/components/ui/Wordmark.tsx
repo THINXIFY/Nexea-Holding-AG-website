@@ -5,9 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import { useMotion } from "@/hooks/useMotion";
-
-/** Logo artwork supplied by Nexea; this variant has the tagline set in Arctic Silver so it reads on Obsidian. */
-const LOGO_SRC = "/images/nexea-holding-logo-on-dark.png";
+import { logoImage } from "@/components/ui/logo-image";
 
 interface WordmarkProps {
   /** "header": reveals on first paint. "footer": reveals once, when scrolled into view. */
@@ -52,10 +50,8 @@ export function Wordmark({ variant = "header", className = "", imageClassName = 
     <Link ref={root} href="/" aria-label="Nexea Holding AG, home" className={`on-dark group relative inline-block leading-none ${className}`}>
       <span data-anim data-logo-wrap className="relative block">
         <Image
-          src={LOGO_SRC}
+          src={logoImage}
           alt=""
-          width={2022}
-          height={537}
           priority={variant === "header"}
           quality={90}
           sizes={variant === "header" ? "(min-width: 768px) 159px, 151px" : "(min-width: 640px) 220px, 197px"}
@@ -65,7 +61,7 @@ export function Wordmark({ variant = "header", className = "", imageClassName = 
         <span
           aria-hidden
           data-logo-sheen
-          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(105deg,transparent_38%,rgba(255,255,255,0.7)_50%,transparent_62%)] [background-position:100%_0] [background-size:260%_100%] [mask-image:url(/images/nexea-logo-mask.png)] [mask-repeat:no-repeat] [mask-size:100%_100%] [-webkit-mask-image:url(/images/nexea-logo-mask.png)] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
+          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(105deg,transparent_38%,rgba(255,255,255,0.7)_50%,transparent_62%)] [background-position:100%_0] [background-size:260%_100%] [mask-image:url(/images/logo/nexea-logo-mask.png)] [mask-repeat:no-repeat] [mask-size:100%_100%] [-webkit-mask-image:url(/images/logo/nexea-logo-mask.png)] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]"
         />
       </span>
     </Link>

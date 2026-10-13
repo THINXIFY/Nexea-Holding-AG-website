@@ -43,13 +43,13 @@ export function AboutHero() {
       >
         <div data-ah-zoom className="absolute inset-0 will-change-transform">
           <Image
-            src="/images/nexea-reception.webp"
+            src="/images/about-hero-stone.webp"
             alt=""
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            className="object-cover object-[88%_45%] md:object-[100%_45%]"
+            className="object-cover object-[55%_35%] md:object-[50%_35%]"
           />
         </div>
       </div>
