@@ -46,7 +46,7 @@ function FactGrid({ facts, cols = 2 }: { facts: readonly Fact[]; cols?: 2 | 3 })
             <span className="min-w-0 font-ui text-[1rem] font-semibold leading-[1.4] text-ink [overflow-wrap:anywhere]">{f.value}</span>
             {f.copy && <CopyValueButton value={f.copy.value} label={f.copy.label} />}
           </dd>
-          {f.note && <p className="mt-1 text-[0.875rem] leading-[1.45]">{f.note}</p>}
+          {f.note && <dd className="mt-1 text-[0.875rem] leading-[1.45]">{f.note}</dd>}
         </div>
       ))}
     </dl>

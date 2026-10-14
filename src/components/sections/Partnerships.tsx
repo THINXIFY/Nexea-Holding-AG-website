@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import Link from "next/link";
 import { ArrowRight, Building2, Lightbulb, Users, type LucideIcon } from "lucide-react";
 import { fadeUp, parallax, revealImage, revealLines } from "@/lib/animations";

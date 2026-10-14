@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import { ArrowRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";

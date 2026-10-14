@@ -58,6 +58,7 @@ export function PartnerPathways() {
             >
               <Link
                 href="/contact?type=partnership#enquiry-form"
+                aria-label={`Discuss ${p.title} with Nexea`}
                 className="group relative flex h-full flex-col py-7 transition-colors duration-500 lg:py-8"
               >
                 <span aria-hidden data-pw-top className="absolute inset-x-0 top-0 h-px origin-left bg-ink/80" />
@@ -75,7 +76,6 @@ export function PartnerPathways() {
                   className="mt-auto grid size-10 place-items-center rounded-full border border-line text-ink transition-colors duration-500 group-hover:border-obsidian group-hover:bg-obsidian group-hover:text-pure"
                 >
                   <ArrowRight aria-hidden strokeWidth={1.4} className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-0.5" />
-                  <span className="sr-only">Discuss {p.title} with Nexea</span>
                 </span>
               </Link>
             </li>

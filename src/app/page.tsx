@@ -1,3 +1,4 @@
+import { HomeCanonical } from "@/components/seo/HomeCanonical";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PAGES } from "@/data/seo";
 import { pageMetadata, pageSchema } from "@/lib/seo";
@@ -17,6 +18,7 @@ export const metadata = pageMetadata(PAGES.home);
 export default function HomePage() {
   return (
     <>
+      <HomeCanonical />
       <JsonLd data={pageSchema(PAGES.home)} />
       <main id="main">
         <HeroSlider />

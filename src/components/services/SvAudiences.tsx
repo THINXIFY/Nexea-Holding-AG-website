@@ -60,6 +60,7 @@ export function SvAudiences() {
               <span aria-hidden data-sw-line className="absolute inset-x-0 top-0 h-px origin-left bg-line" />
               <Link
                 href="/partnerships"
+                aria-label={`${a.title}: explore Nexea's partnership pathways`}
                 className="group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-start gap-x-4 py-7 transition-colors duration-500 hover:bg-frost sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-x-6 sm:py-9 sm:pl-2 sm:pr-3"
               >
                 <span data-anim data-sw-body aria-hidden className="font-display text-[2rem] leading-none text-steel/50 transition-colors duration-500 group-hover:text-ink sm:text-[2.5rem]">

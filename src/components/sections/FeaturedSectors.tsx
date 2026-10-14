@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";

@@ -105,13 +105,18 @@ export function HeroSlider() {
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  // Load the other two photographs only after the first has painted (or as soon as the visitor navigates).
+  // Load the other two photographs a few seconds after the page has loaded (autoplay reaches slide 2 at 7s), so they never
+  // compete with the first photograph and the headline for bandwidth. A visitor who navigates sooner arms them instantly.
   useEffect(() => {
-    const idle = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
-    const t = idle ? idle(() => setArmed(true), { timeout: 2500 }) : window.setTimeout(() => setArmed(true), 1500);
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const arm = () => {
+      t = setTimeout(() => setArmed(true), 3000);
+    };
+    if (document.readyState === "complete") arm();
+    else window.addEventListener("load", arm, { once: true });
     return () => {
-      if (idle) (window as unknown as { cancelIdleCallback: (n: number) => void }).cancelIdleCallback(t);
-      else clearTimeout(t);
+      clearTimeout(t);
+      window.removeEventListener("load", arm);
     };
   }, []);
 
@@ -196,7 +201,7 @@ export function HeroSlider() {
       onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node | null) && setFocusIn(false)}
       className="on-dark relative isolate flex min-h-[max(36rem,100svh)] flex-col overflow-hidden bg-obsidian text-pure [touch-action:pan-y]"
     >
-      <h1 className="sr-only">Investing Beyond Boundaries.</h1>
+      <h1 className="sr-only">Nexea Holding AG: Investing Beyond Boundaries.</h1>
 
       {/* Photographs: the new image fades in over the previous one (which stays painted underneath). */}
       <div aria-hidden className="absolute inset-0 -z-20 bg-obsidian">

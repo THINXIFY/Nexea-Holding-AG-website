@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import { ADDRESS_LINES, COMPANY, MAPS_LINK_URL } from "@/data/company";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { FooterGroup, type FooterLink } from "@/components/layout/FooterNav";

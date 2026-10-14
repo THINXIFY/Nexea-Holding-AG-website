@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import { gsap } from "@/lib/gsap";
 import { fadeUp, parallax, revealLines } from "@/lib/animations";
 import { useMotion } from "@/hooks/useMotion";

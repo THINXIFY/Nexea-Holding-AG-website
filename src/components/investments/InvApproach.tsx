@@ -91,7 +91,7 @@ export function InvApproach() {
                     <span data-ap-fill className="absolute inset-0 origin-top bg-steel" />
                   </span>
                 )}
-                <div className="min-w-0 transition-opacity duration-500 group-data-[state=idle]:opacity-70">
+                <div className="min-w-0 transition-opacity duration-500 group-data-[state=idle]:opacity-90">
                   <h3 className="flex min-h-12 items-center font-display text-[1.5rem] leading-[1.2] text-ink sm:text-[1.75rem]">{s.title}</h3>
                   <p className="max-w-[30rem] text-[1rem] leading-[1.55]">{s.description}</p>
                 </div>

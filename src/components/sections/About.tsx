@@ -1,13 +1,18 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
+import Link from "next/link";
 import { CalendarDays, Globe2, MapPin, type LucideIcon } from "lucide-react";
 import { fadeUp, parallax, revealImage, revealLines } from "@/lib/animations";
 import { useMotion } from "@/hooks/useMotion";
 import { Button } from "@/components/ui/Button";
 import { MaskedLines } from "@/components/ui/MaskedLines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+
+/** Inline text link: understated, keeps the editorial look while staying clearly a link. */
+const LINK =
+  "font-medium text-ink underline decoration-steel/60 underline-offset-4 transition-colors duration-300 hover:decoration-ink focus-visible:decoration-ink";
 
 interface Fact {
   value: string;
@@ -122,13 +127,17 @@ export function About() {
               className="mt-8 grid max-w-[36rem] gap-6 text-[1.0625rem] leading-[1.6] 2xl:max-w-none sm:mt-10 2xl:grid-cols-2 2xl:gap-10"
             >
               <p data-anim data-about-copy>
-                Established in 2004 and headquartered in Hergiswil, Switzerland, Nexea Holding AG
-                is a privately held investment company focused on corporate participations across
-                domestic and international markets.
+                Established in 2004, Nexea Holding AG is a Swiss investment holding company with its
+                registered office in Hergiswil NW, Switzerland, focused on corporate participations
+                across domestic and international markets.
               </p>
               <p data-anim data-about-copy>
-                With a long-term perspective, Nexea explores opportunities across established
-                businesses, real assets, and evolving industries.
+                With a long-term perspective, Nexea Holding explores opportunities across established
+                businesses, real assets, and evolving industries. Explore our{" "}
+                <Link href="/investments" className={LINK}>investment sectors</Link> and{" "}
+                <Link href="/services" className={LINK}>areas of expertise</Link>, meet the{" "}
+                <Link href="/team" className={LINK}>leadership team</Link>, or{" "}
+                <Link href="/contact" className={LINK}>contact Nexea Holding AG</Link>.
               </p>
             </div>
 

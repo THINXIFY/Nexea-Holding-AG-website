@@ -51,7 +51,7 @@ export function Wordmark({ variant = "header", className = "", imageClassName = 
       <span data-anim data-logo-wrap className="relative block">
         <Image
           src={logoImage}
-          alt=""
+          alt="Nexea Holding AG"
           priority={variant === "header"}
           quality={90}
           sizes={variant === "header" ? "(min-width: 768px) 159px, 151px" : "(min-width: 640px) 220px, 197px"}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { COMPANY } from "@/data/company";
-import { PAGES, SITE_SLOGAN, type PageSeo } from "@/data/seo";
+import { PAGES, SITE_ALT_NAME, SITE_SLOGAN, type PageSeo } from "@/data/seo";
 
 export const SITE_URL = COMPANY.url;
 export const SITE_NAME = COMPANY.name;
@@ -16,19 +16,22 @@ export const OG_IMAGE = {
   type: "image/jpeg",
 } as const;
 
-/** Canonical absolute URL. The home page is the bare origin, exactly as Next.js emits its canonical and og:url. */
-const abs = (path: string) => (path === "/" ? SITE_URL : `${SITE_URL}${path}`);
+/** Canonical absolute URL. The preferred home URL is `https://nexea-holding.com/` (with the trailing slash). */
+export const abs = (path: string) => `${SITE_URL}${path}`;
 
 /** Complete per-page metadata: title, description, canonical, Open Graph and Twitter. Pages replace (not merge) the layout's openGraph, so each carries everything it needs. */
 export function pageMetadata(page: PageSeo): Metadata {
+  // Next.js normalises the root canonical / og:url to "https://nexea-holding.com" (no slash). The preferred home URL keeps the
+  // slash, so for "/" those two tags come from <HomeCanonical /> instead (see components/seo/HomeCanonical.tsx).
+  const home = page.path === "/";
   return {
     title: { absolute: page.title },
     description: page.description,
-    alternates: { canonical: page.path },
+    ...(!home && { alternates: { canonical: abs(page.path) } }),
     openGraph: {
       title: page.title,
       description: page.description,
-      url: page.path,
+      ...(!home && { url: abs(page.path) }),
       siteName: SITE_NAME,
       type: "website",
       locale: "en_GB",
@@ -43,7 +46,9 @@ export function pageMetadata(page: PageSeo): Metadata {
   };
 }
 
-// ----- JSON-LD (schema.org). Only facts already published on the site: no ratings, awards, licences or offices.
+// ----- JSON-LD (schema.org). Only facts already published on the site (Impressum / commercial register): no ratings,
+// reviews, awards, licences, financial figures, profiles or other offices. The Organization and WebSite entities are defined
+// once, on the home page; every other page refers to them by @id, so there is never a second or conflicting Organization.
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_ID = `${SITE_URL}/#website`;
@@ -52,8 +57,9 @@ const organization = {
   "@type": "Organization",
   "@id": ORG_ID,
   name: SITE_NAME,
+  alternateName: SITE_ALT_NAME,
   legalName: SITE_NAME,
-  url: SITE_URL,
+  url: abs("/"),
   logo: { "@type": "ImageObject", "@id": `${SITE_URL}/#logo`, url: LOGO_URL, contentUrl: LOGO_URL, width: 1586, height: 450, caption: SITE_NAME },
   image: `${SITE_URL}${OG_IMAGE.url}`,
   slogan: SITE_SLOGAN,
@@ -68,15 +74,19 @@ const organization = {
     addressRegion: "NW",
     addressCountry: "CH",
   },
-  identifier: { "@type": "PropertyValue", propertyID: "Swiss company UID (UID-Register)", value: COMPANY.uid },
+  identifier: [
+    { "@type": "PropertyValue", propertyID: "Swiss company identification number (UID)", value: COMPANY.uid },
+    { "@type": "PropertyValue", propertyID: "Swiss commercial register number", value: COMPANY.commercialRegisterNumber },
+  ],
   contactPoint: { "@type": "ContactPoint", contactType: "general enquiries", email: COMPANY.email, availableLanguage: ["English"] },
 };
 
 const website = {
   "@type": "WebSite",
   "@id": SITE_ID,
-  url: SITE_URL,
+  url: abs("/"),
   name: SITE_NAME,
+  alternateName: SITE_ALT_NAME,
   description: PAGES.home.description,
   inLanguage: "en",
   publisher: { "@id": ORG_ID },
@@ -89,9 +99,9 @@ const webPage = (page: PageSeo) => ({
   name: page.title,
   description: page.description,
   inLanguage: "en",
+  dateModified: page.updated,
   isPartOf: { "@id": SITE_ID },
-  about: { "@id": ORG_ID },
-  ...(page.path !== "/" && { breadcrumb: { "@id": `${abs(page.path)}#breadcrumb` } }),
+  ...(page.path === "/" ? { about: { "@id": ORG_ID } } : { breadcrumb: { "@id": `${abs(page.path)}#breadcrumb` } }),
 });
 
 const breadcrumb = (page: PageSeo) => ({
@@ -103,12 +113,12 @@ const breadcrumb = (page: PageSeo) => ({
   ],
 });
 
-/** Structured data for one page. The home page carries the Organization and WebSite entities; inner pages add a BreadcrumbList. */
+/** Structured data for one page. Home: Organization + WebSite + WebPage. Inner pages: WebPage + BreadcrumbList (referencing the home entities). */
 export function pageSchema(page: PageSeo) {
   const home = page.path === "/";
   return {
     "@context": "https://schema.org",
-    "@graph": home ? [organization, website, webPage(page)] : [webPage(page), breadcrumb(page), { "@id": ORG_ID, "@type": "Organization", name: SITE_NAME, url: SITE_URL, logo: LOGO_URL }],
+    "@graph": home ? [organization, website, webPage(page)] : [webPage(page), breadcrumb(page)],
   };
 }
 

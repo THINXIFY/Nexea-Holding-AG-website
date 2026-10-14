@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/DeferredImage";
 import Link from "next/link";
 import { Compass, Layers, RefreshCw, Scale, ShieldCheck, type LucideIcon } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
